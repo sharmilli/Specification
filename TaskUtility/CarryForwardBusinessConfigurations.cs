@@ -6,20 +6,18 @@ namespace TaskUtility
 {
     public class CarryForwardBusinessConfiguration : ICarryForwardBusinessConfiguration
     {
-        private CarryForwardBusinessConfiguration() { }
-
-        public CarryForwardBusinessConfiguration(ICarryForwardBusinessConfiguration carryForwardConfig)
-        {
-            DayOfMonth = carryForwardConfig.DayOfMonth;
-            Email = carryForwardConfig.Email;
-            Owner = carryForwardConfig.Owner;
-            Rule = carryForwardConfig.Rule;
-            RuleId = carryForwardConfig.RuleId;
-            RuleFreequency = carryForwardConfig.RuleFreequency;
-            Path = carryForwardConfig.Path;
-            PendingSince = carryForwardConfig.PendingSince;
-        }
-        public int DayOfMonth { get; set; }
+        public CarryForwardBusinessConfiguration() { }
+        private int dayOfMonth;
+        public int NthWorkingDayOfMonth { get; set; }
+        //{
+        //    get { return CalendarUtility.NthBusinessDayOfMonth(); }
+        //    set { this.dayOfMonth = value; }
+        //}
+        public int RemainingWorkingDaysOfMonth { get; set; }
+        //{
+        //    get { return CalendarUtility.RemainingBusinessDaysInMonth(); }
+        //    set { this.dayOfMonth = value; }
+        //}
 
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
@@ -41,7 +39,7 @@ namespace TaskUtility
             //connect to the database and fetch the list of carry forward rules
             return new List<ICarryForwardBusinessConfiguration>();
         }
-        public void UpdateCarryForwardRule()
+        public void UpdateCarryForwardRule(ICarryForwardBusinessConfiguration carryForward)
         {
             // If the rule execution is not successful, update the carryforward table
         }

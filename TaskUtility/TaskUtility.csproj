@@ -80,7 +80,7 @@
     <Compile Include="CarryForwardBusinessConfigurations.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="File.cs" />
-    <Compile Include="FileRule.cs" />
+    <Compile Include="FilePath.cs" />
     <Compile Include="ICarryForwardBusinessConfiguration.cs" />
     <Compile Include="IBusinessConfiguration.cs" />
     <Compile Include="Constants.cs" />

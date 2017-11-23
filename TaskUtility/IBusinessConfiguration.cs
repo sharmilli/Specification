@@ -5,7 +5,8 @@
         int RuleId { get; set; }
         string Rule { get; set; }
         string Owner { get; set; }
-        int DayOfMonth { get; set; }
+        int NthWorkingDayOfMonth { get; set; }
+        int RemainingWorkingDaysOfMonth { get; set; }
         string Email { get; set; }
         Freequency RuleFreequency { get; set; }
         string Path { get; set; }

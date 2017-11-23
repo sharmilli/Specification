@@ -1,24 +1,19 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
+using System.Linq;
 namespace TaskUtility
 {
 
     public class BusinessConfiguration : IBusinessConfiguration
     {
-        private BusinessConfiguration() { }
-        public BusinessConfiguration(IBusinessConfiguration businessConfig)
-        {
-            this.RuleId = businessConfig.RuleId;
-            this.DayOfMonth = businessConfig.DayOfMonth;
-            this.Rule = businessConfig.Rule;
-            this.RuleFreequency = businessConfig.RuleFreequency;
-            this.Owner = businessConfig.Owner;
-            this.Path = businessConfig.Path;
-        }
+        public BusinessConfiguration() { }
+        private int dayOfMonth;
         public int RuleId { get; set; }
-        public int DayOfMonth { get; set; }
-
+        public int NthWorkingDayOfMonth { get; set; }
+        
+        public int RemainingWorkingDaysOfMonth { get; set; }
+        
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
@@ -29,14 +24,14 @@ namespace TaskUtility
         public Freequency RuleFreequency { get; set; }
 
         public string Path { get; set; }
-        public List<IBusinessConfiguration> GetBusinessRules(int dayOfTheMonth)
+        public BusinessConfiguration GetBusinessRules(int dayOfTheMonth, bool isFromEnd)
         {
             //connect to the database and fetch the list of Business rules greater than the nth day
-            return new List<IBusinessConfiguration>();
+            return new BusinessConfiguration();
         }
-        public void UpdateBusinessRule(IBusinessConfiguration businessConfiguration)
+        public void UpdateBusinessRule(BusinessConfiguration businessConfiguration)
         {
-
+            
             // If the rule execution is successful
 
         }
