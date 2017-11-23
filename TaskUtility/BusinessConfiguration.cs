@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-
+using System.Collections.Generic;
 namespace TaskUtility
 {
 
@@ -29,7 +29,17 @@ namespace TaskUtility
         public Freequency RuleFreequency { get; set; }
 
         public string Path { get; set; }
-        
+        public List<IBusinessConfiguration> GetBusinessRules(int dayOfTheMonth)
+        {
+            //connect to the database and fetch the list of Business rules greater than the nth day
+            return new List<IBusinessConfiguration>();
+        }
+        public void UpdateBusinessRule(IBusinessConfiguration businessConfiguration)
+        {
+
+            // If the rule execution is successful
+
+        }
 
     }
 }

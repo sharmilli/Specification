@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 namespace TaskUtility
 {
-    public class Email 
+    public class Email :ITask
     {
         private Email()
         { }
@@ -15,8 +15,9 @@ namespace TaskUtility
             Subject = subject;
             Message = message;
         }
-        public int EmailID { get; set; }
+        public int TaskID { get; set; }
         
+        public Tasks TaskName { get; set; }
 
         [Required]
         [DataType(DataType.EmailAddress)]
@@ -35,7 +36,7 @@ namespace TaskUtility
         [Required]
         public string Message { get; set; }
 
-        public void Send()
+        public void ExecuteTask()
         {
             //<DEBUG>Console.WriteLine(this.From + ":" + this.To + ":" + this.Subject + ":" + this.Message);</DEBUG>
             //Fetch the email template from the database

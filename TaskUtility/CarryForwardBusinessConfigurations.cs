@@ -6,6 +6,19 @@ namespace TaskUtility
 {
     public class CarryForwardBusinessConfiguration : ICarryForwardBusinessConfiguration
     {
+        private CarryForwardBusinessConfiguration() { }
+
+        public CarryForwardBusinessConfiguration(ICarryForwardBusinessConfiguration carryForwardConfig)
+        {
+            DayOfMonth = carryForwardConfig.DayOfMonth;
+            Email = carryForwardConfig.Email;
+            Owner = carryForwardConfig.Owner;
+            Rule = carryForwardConfig.Rule;
+            RuleId = carryForwardConfig.RuleId;
+            RuleFreequency = carryForwardConfig.RuleFreequency;
+            Path = carryForwardConfig.Path;
+            PendingSince = carryForwardConfig.PendingSince;
+        }
         public int DayOfMonth { get; set; }
 
         [DataType(DataType.EmailAddress)]
@@ -23,15 +36,14 @@ namespace TaskUtility
         
         public DateTime PendingSince { get; set; }
 
-        /*Check if these methods has to be a part of different class
-        public void AddCarryForwardRule()
+        public List<ICarryForwardBusinessConfiguration> GetCarryForwardBusinessRules()
         {
-            //Implement the logic to update the database table for carryforward whenever the business rule is not executed successfully
+            //connect to the database and fetch the list of carry forward rules
+            return new List<ICarryForwardBusinessConfiguration>();
         }
-
-        public void RemoveCarryForwardRule(int RuleId)
+        public void UpdateCarryForwardRule()
         {
-            //Whenever the pending rule execution gets completed, delete the carry forward record from the database table.
-        }*/
+            // If the rule execution is not successful, update the carryforward table
+        }
     }
 }

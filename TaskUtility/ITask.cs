@@ -6,5 +6,7 @@ namespace TaskUtility
         int TaskID { get; set; }
 
         Tasks TaskName { get; set; }
+
+        void ExecuteTask();
     }
 }

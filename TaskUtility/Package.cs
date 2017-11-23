@@ -1,7 +1,7 @@
 ﻿
 namespace TaskUtility
 {
-    public class Package
+    public class Package:ITask
     {
         private Package() { }
 
@@ -10,15 +10,17 @@ namespace TaskUtility
             Name = name;
             Command = command;
         }
-        public int id { get; set; }
+        public int TaskID { get; set; }
+
+        public Tasks TaskName { get; set; }
 
         public string Name { get; set; }
 
         public string Command { get; set; }
 
-        public bool ExecutePackage()
+        public void ExecuteTask()
         {
-            return true; //The logic to execute the desired SSIS package goes here. If the action is successful return
+             //The logic to execute the desired SSIS package goes here. If the action is successful return
         }
     }
 }
