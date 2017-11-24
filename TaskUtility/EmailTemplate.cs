@@ -12,8 +12,14 @@ namespace TaskUtility
     using System;
     using System.Collections.Generic;
     
-    public partial class Email
+    public partial class EmailTemplate
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public EmailTemplate()
+        {
+            this.Emails = new HashSet<Email>();
+        }
+    
         public long Id { get; set; }
         public string From { get; set; }
         public string To { get; set; }
@@ -22,7 +28,8 @@ namespace TaskUtility
         public string Message { get; set; }
         public int TaskId { get; set; }
     
-        public virtual UserCountryRole UserCountryRole { get; set; }
-        public virtual EmailTemplate EmailTemplate { get; set; }
+        public virtual Task Task { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Email> Emails { get; set; }
     }
 }

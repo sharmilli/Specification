@@ -9,7 +9,5 @@
         int RemainingWorkingDaysOfMonth { get; set; }
         string Email { get; set; }
         Freequency RuleFreequency { get; set; }
-        string Path { get; set; }
-
     }
 }

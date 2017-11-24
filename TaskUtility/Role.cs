@@ -12,12 +12,18 @@ namespace TaskUtility
     using System;
     using System.Collections.Generic;
     
-    public partial class File
+    public partial class Role
     {
-        public long Id { get; set; }
-        public string Name { get; set; }
-        public int TaskId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Role()
+        {
+            this.UserCountryRoles = new HashSet<UserCountryRole>();
+        }
     
-        public virtual Task Task { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserCountryRole> UserCountryRoles { get; set; }
     }
 }

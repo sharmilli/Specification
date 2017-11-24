@@ -12,12 +12,12 @@ namespace TaskUtility
     using System;
     using System.Collections.Generic;
     
-    public partial class File
+    public partial class CarryForwardRules
     {
         public long Id { get; set; }
-        public string Name { get; set; }
-        public int TaskId { get; set; }
+        public long RuleId { get; set; }
+        public System.DateTime PendingSince { get; set; }
     
-        public virtual Task Task { get; set; }
+        public virtual Rule Rule { get; set; }
     }
 }

@@ -12,12 +12,13 @@ namespace TaskUtility
     using System;
     using System.Collections.Generic;
     
-    public partial class File
+    public partial class TaskStatus
     {
         public long Id { get; set; }
-        public string Name { get; set; }
         public int TaskId { get; set; }
+        public short StatusId { get; set; }
     
         public virtual Task Task { get; set; }
+        public virtual Status Status { get; set; }
     }
 }

@@ -22,8 +22,7 @@ namespace TaskUtility
         public string Rule { get; set; }
 
         public Freequency RuleFreequency { get; set; }
-
-        public string Path { get; set; }
+        
         public BusinessConfiguration GetBusinessRules(int dayOfTheMonth, bool isFromEnd)
         {
             //connect to the database and fetch the list of Business rules greater than the nth day

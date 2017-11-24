@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<BusinessSpecification>
+  <Business name="Mexico" q1Month="Nov" requestorEmail="sharmili.priyadarsini@cognizant.com">
+    <Rule name="MonthlyPrebookRequestReminder" nthWorkingDay="4" isRemaing="1" freequency="Monthly" owner="Requestor">
+      <Task name="Email" type="reminder"/>
+    </Rule>
+    <Rule name="MonthlyReports" nthWorkingDay="1" isRemaing="0" freequency="Monthly" owner="ITTeam">
+      <Task name="LookUp" type="check"/>
+      <Task name="Email" type="reminder"/>
+      <Task name="Email" type="Notification"/>
+    </Rule>
+    <Rule name="PrebookingReports" nthWorkingDay="3" isRemaing="0" freequency="Monthly" owner="ITTeam">
+      <Task name="LookUp" type="check"/>
+      <Task name="Email" type="reminder"/>
+      <Task name="Email" type="Notification"/>
+    </Rule>
+    <Rule name="GPRequestReminder" nthWorkingDay="2" isRemaing="0" freequency="Monthly" owner="Requestor">
+      <Task name="Email" type="reminder"/>
+    </Rule>
+    <Rule name="AccountsTeamValidation" nthWorkingDay="2" isRemaing="0" freequency="Monthly" owner="Accounts">
+      <Task name="Email" type="Notification"/>
+    </Rule>
+    <Rule name="PortfolioExecutiveComments" nthWorkingDay="4" isRemaining="0" freequency="Monthly" owner="PortfolioExecutive">
+      <Task name="Procedure" type="create"/>
+      <Task name="Email" type="Notification"/>
+    </Rule>
+    <Rule name="PrepareMonthlyLAD" nthWorkingDay="10" isRemaining="0" freequency="Monthly" owner="Puertorico">
+      <Task name="Package" type="Import"/>
+      <Task name="Procedure" type="create"/>
+      <Task name="Export" type="Excel"/>
+      <Task name="Email" type="Notification"/>
+    </Rule>
+  </Business>
+</BusinessSpecification>
