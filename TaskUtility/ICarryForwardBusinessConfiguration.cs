@@ -2,10 +2,9 @@
 
 namespace TaskUtility
 {
-    public interface ICarryForwardBusinessConfiguration 
+    public interface ICarryForwardBusinessConfiguration : IBusinessConfiguration
     {
         int Id { get; set; }
-        int RuleId { get; set; }
         DateTime PendingSince { get; set; }
     }
 }

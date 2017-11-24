@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <BusinessSpecification>
-  <Business name="Mexico" q1Month="Nov" requestorEmail="sharmili.priyadarsini@cognizant.com">
+  <Business id="1" name="Mexico" q1Month="Nov" remainingWorkDays="4" requestorEmail="sharmilis.priyadarsini@gmail.com">
     <Rule name="MonthlyPrebookRequestReminder" nthWorkingDay="4" isRemaing="1" freequency="Monthly" owner="Requestor">
       <Task name="Email" type="reminder"/>
     </Rule>
@@ -31,4 +31,6 @@
       <Task name="Email" type="Notification"/>
     </Rule>
   </Business>
+  <Business id="2" name="Equador" q1Month="Nov" remainingWorkDays="4" requestorEmail="sharmili.priyadharshini@gmail.com"/>
+  
 </BusinessSpecification>

@@ -20,7 +20,7 @@
         <EntityTypeShape EntityType="LADAutomationModel.File" Width="1.5" PointX="12.75" PointY="0.625" IsExpanded="false" />
         <AssociationConnector Association="LADAutomationModel.TaskFile" />
         <AssociationConnector Association="LADAutomationModel.RuleTask" />
-        <EntityTypeShape EntityType="LADAutomationModel.CarryForwardRules" Width="1.5" PointX="12.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LADAutomationModel.CarryForwardRules" Width="1.5" PointX="12.75" PointY="3.625" IsExpanded="false" />
         <AssociationConnector Association="LADAutomationModel.RuleCarryForwardRules" />
         <EntityTypeShape EntityType="LADAutomationModel.EmailTemplate" Width="1.5" PointX="8.25" PointY="2.75" IsExpanded="false" />
         <AssociationConnector Association="LADAutomationModel.TaskEmailTemplate" />

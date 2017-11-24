@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/24/2017 16:38:39
+-- Date Created: 11/24/2017 18:56:45
 -- Generated from EDMX file: C:\Users\662942\documents\visual studio 2015\Projects\AIGLADAutomation\TaskUtility\LADAutomationDataModel.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,89 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_UserUserCountryRole]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserCountryRoles] DROP CONSTRAINT [FK_UserUserCountryRole];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RoleUserCountryRole]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserCountryRoles] DROP CONSTRAINT [FK_RoleUserCountryRole];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CountryUserCountryRole]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[UserCountryRoles] DROP CONSTRAINT [FK_CountryUserCountryRole];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TaskTypeTask]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Tasks] DROP CONSTRAINT [FK_TaskTypeTask];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserCountryRoleRule]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Rules] DROP CONSTRAINT [FK_UserCountryRoleRule];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TaskFile]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Files] DROP CONSTRAINT [FK_TaskFile];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RuleTask]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Tasks] DROP CONSTRAINT [FK_RuleTask];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RuleCarryForwardRules]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CarryForwardRules] DROP CONSTRAINT [FK_RuleCarryForwardRules];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TaskEmailTemplate]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EmailTemplates] DROP CONSTRAINT [FK_TaskEmailTemplate];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UserCountryRoleEmail]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Emails] DROP CONSTRAINT [FK_UserCountryRoleEmail];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EmailTemplateEmail]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Emails] DROP CONSTRAINT [FK_EmailTemplateEmail];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TaskTaskStatus]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TaskStatus] DROP CONSTRAINT [FK_TaskTaskStatus];
+GO
+IF OBJECT_ID(N'[dbo].[FK_StatusTaskStatus]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TaskStatus] DROP CONSTRAINT [FK_StatusTaskStatus];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Users];
+GO
+IF OBJECT_ID(N'[dbo].[Roles]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Roles];
+GO
+IF OBJECT_ID(N'[dbo].[Countries]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Countries];
+GO
+IF OBJECT_ID(N'[dbo].[UserCountryRoles]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UserCountryRoles];
+GO
+IF OBJECT_ID(N'[dbo].[Rules]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Rules];
+GO
+IF OBJECT_ID(N'[dbo].[TaskTypes]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TaskTypes];
+GO
+IF OBJECT_ID(N'[dbo].[Tasks]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Tasks];
+GO
+IF OBJECT_ID(N'[dbo].[Files]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Files];
+GO
+IF OBJECT_ID(N'[dbo].[CarryForwardRules]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CarryForwardRules];
+GO
+IF OBJECT_ID(N'[dbo].[EmailTemplates]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[EmailTemplates];
+GO
+IF OBJECT_ID(N'[dbo].[Emails]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Emails];
+GO
+IF OBJECT_ID(N'[dbo].[Status]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Status];
+GO
+IF OBJECT_ID(N'[dbo].[TaskStatus]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TaskStatus];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables

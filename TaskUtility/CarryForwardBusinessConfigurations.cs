@@ -1,25 +1,68 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-
+using System.Linq;
 namespace TaskUtility
 {
     public class CarryForwardBusinessConfiguration : ICarryForwardBusinessConfiguration
     {
         public CarryForwardBusinessConfiguration() { }
         public int Id { get; set; }
-        public int RuleId { get; set; }
+        public long RuleId { get; set; }
         public DateTime PendingSince { get; set; }
 
-        public List<ICarryForwardBusinessConfiguration> GetCarryForwardBusinessRules()
+        private int dayOfMonth;
+        public int NthWorkingDayOfMonth { get; set; }
+
+        public int RemainingWorkingDaysOfMonth { get; set; }
+
+        [DataType(DataType.EmailAddress)]
+        public string Recipient { get; set; }
+        [DataType(DataType.EmailAddress)]
+        public string Owner { get; set; }
+
+        public string Rule { get; set; }
+
+        public Freequency RuleFreequency { get; set; }
+
+        public List<CarryForwardBusinessConfiguration> GetCarryForwardBusinessRules()
         {
+            List<CarryForwardBusinessConfiguration> carryForwardRules = new List<CarryForwardBusinessConfiguration>();
             //connect to the database and fetch the list of carry forward rules
-            
-            return new List<ICarryForwardBusinessConfiguration>();
+            using (LADAutomationEntities context = new LADAutomationEntities())
+            {
+                carryForwardRules = (from carryRules in context.CarryForwardRules
+                                        join rules in context.Rules on carryRules.RuleId equals rules.Id
+                                        join owner1 in context.UserCountryRoles on rules.OwnerId equals owner1.Id
+                                        join recipient1 in context.UserCountryRoles on rules.RecipientId equals recipient1.Id
+                                        join owner in context.Users on owner1.UserId equals owner.Id
+                                        join recipient in context.Users on recipient1.UserId equals recipient.Id
+                                        where rules.isRemaining.Equals(false)//todo: now mexico, the id to be populated from configuration
+                                        select new CarryForwardBusinessConfiguration
+                                        {
+                                            RuleId = rules.Id,
+                                            Rule = rules.Name,
+                                            Owner = owner.Email,
+                                            Recipient = recipient.Email,
+                                            NthWorkingDayOfMonth = rules.BusinessDay,
+                                            PendingSince = carryRules.PendingSince
+                                        }).ToList();
+            }
+            return carryForwardRules;
         }
-        public void UpdateCarryForwardRule(ICarryForwardBusinessConfiguration carryForward)
+        public void AddCarryForwardRule(BusinessConfiguration businessConfiguration)
         {
-            // If the rule execution is not successful, update the carryforward table
+            // If the rule execution is not successful, add record the carryforward table
+            using (LADAutomationEntities context = new LADAutomationEntities())
+            {
+                var carryForward = new CarryForwardRules();
+                carryForward.PendingSince = DateTime.Now;
+                carryForward.RuleId = businessConfiguration.RuleId;
+                context.CarryForwardRules.Add(carryForward);
+                context.SaveChanges();
+
+
+            }
         }
     }
 }
