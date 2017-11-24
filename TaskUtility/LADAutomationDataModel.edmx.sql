@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/24/2017 18:56:45
+-- Date Created: 11/24/2017 19:52:10
 -- Generated from EDMX file: C:\Users\662942\documents\visual studio 2015\Projects\AIGLADAutomation\TaskUtility\LADAutomationDataModel.edmx
 -- --------------------------------------------------
 
@@ -233,6 +233,15 @@ CREATE TABLE [dbo].[TaskStatus] (
 );
 GO
 
+-- Creating table 'AuditTrails'
+CREATE TABLE [dbo].[AuditTrails] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [TaskId] bigint  NOT NULL,
+    [Log] nvarchar(max)  NOT NULL,
+    [Task_Id] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -312,6 +321,12 @@ GO
 -- Creating primary key on [Id] in table 'TaskStatus'
 ALTER TABLE [dbo].[TaskStatus]
 ADD CONSTRAINT [PK_TaskStatus]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'AuditTrails'
+ALTER TABLE [dbo].[AuditTrails]
+ADD CONSTRAINT [PK_AuditTrails]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -512,6 +527,21 @@ GO
 CREATE INDEX [IX_FK_StatusTaskStatus]
 ON [dbo].[TaskStatus]
     ([Status_Id]);
+GO
+
+-- Creating foreign key on [Task_Id] in table 'AuditTrails'
+ALTER TABLE [dbo].[AuditTrails]
+ADD CONSTRAINT [FK_TaskAuditTrail]
+    FOREIGN KEY ([Task_Id])
+    REFERENCES [dbo].[Tasks]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TaskAuditTrail'
+CREATE INDEX [IX_FK_TaskAuditTrail]
+ON [dbo].[AuditTrails]
+    ([Task_Id]);
 GO
 
 -- --------------------------------------------------

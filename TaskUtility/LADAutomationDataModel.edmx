@@ -19,6 +19,7 @@
     <EntitySet Name="Emails" EntityType="LADAutomationModel.Store.Emails" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Status" EntityType="LADAutomationModel.Store.Status" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TaskStatus" EntityType="LADAutomationModel.Store.TaskStatus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AuditTrails" EntityType="LADAutomationModel.Store.AuditTrails" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="UserUserCountryRole" Association="LADAutomationModel.Store.UserUserCountryRole">
       <End Role="User" EntitySet="Users" />
       <End Role="UserCountryRole" EntitySet="UserCountryRoles" />
@@ -70,6 +71,10 @@
     <AssociationSet Name="StatusTaskStatus" Association="LADAutomationModel.Store.StatusTaskStatus">
       <End Role="Status" EntitySet="Status" />
       <End Role="TaskStatus" EntitySet="TaskStatus" />
+    </AssociationSet>
+    <AssociationSet Name="TaskAuditTrail" Association="LADAutomationModel.Store.TaskAuditTrail">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="AuditTrail" EntitySet="AuditTrails" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
@@ -199,6 +204,15 @@
     <Property Name="StatusId" Type="smallint" Nullable="false" />
     <Property Name="Task_Id" Type="int" Nullable="false" />
     <Property Name="Status_Id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AuditTrails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskId" Type="bigint" Nullable="false" />
+    <Property Name="Log" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Task_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="UserUserCountryRole">
     <End Role="User" Type="LADAutomationModel.Store.Users" Multiplicity="1" />
@@ -353,6 +367,18 @@
       </Principal>
       <Dependent Role="TaskStatus">
         <PropertyRef Name="Status_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TaskAuditTrail">
+    <End Role="Task" Type="LADAutomationModel.Store.Tasks" Multiplicity="1" />
+    <End Role="AuditTrail" Type="LADAutomationModel.Store.AuditTrails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AuditTrail">
+        <PropertyRef Name="Task_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -773,6 +799,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="AuditTrails">
+      <EntityTypeMapping TypeName="IsTypeOf(LADAutomationModel.AuditTrail)">
+        <MappingFragment StoreEntitySet="AuditTrails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="Log" ColumnName="Log" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="UserUserCountryRole" TypeName="LADAutomationModel.UserUserCountryRole" StoreEntitySet="UserCountryRoles">
       <EndProperty Name="User">
         <ScalarProperty Name="Id" ColumnName="User_Id" />
@@ -874,6 +909,14 @@
         <ScalarProperty Name="Id" ColumnName="Status_Id" />
       </EndProperty>
       <EndProperty Name="TaskStatus">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TaskAuditTrail" TypeName="LADAutomationModel.TaskAuditTrail" StoreEntitySet="AuditTrails">
+      <EndProperty Name="Task">
+        <ScalarProperty Name="Id" ColumnName="Task_Id" />
+      </EndProperty>
+      <EndProperty Name="AuditTrail">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
