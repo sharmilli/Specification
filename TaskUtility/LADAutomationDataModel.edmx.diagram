@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="LADAutomationModel.User" Width="1.5" PointX="1.375" PointY="0.5" IsExpanded="false" />
         <EntityTypeShape EntityType="LADAutomationModel.Role" Width="1.5" PointX="3.625" PointY="0.5" IsExpanded="false" />
         <EntityTypeShape EntityType="LADAutomationModel.Country" Width="1.5" PointX="6.125" PointY="0.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="LADAutomationModel.UserCountryRole" Width="1.5" PointX="3.625" PointY="2.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="LADAutomationModel.UserCountryRole" Width="1.625" PointX="3.5" PointY="2.5" IsExpanded="false" />
         <AssociationConnector Association="LADAutomationModel.UserUserCountryRole" />
         <AssociationConnector Association="LADAutomationModel.RoleUserCountryRole" />
         <AssociationConnector Association="LADAutomationModel.CountryUserCountryRole" />
@@ -17,10 +17,10 @@
         <EntityTypeShape EntityType="LADAutomationModel.Task" Width="1.5" PointX="10.75" PointY="0.5" IsExpanded="false" />
         <AssociationConnector Association="LADAutomationModel.TaskTypeTask" />
         <AssociationConnector Association="LADAutomationModel.UserCountryRoleRule" />
-        <EntityTypeShape EntityType="LADAutomationModel.File" Width="1.5" PointX="12.75" PointY="0.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="LADAutomationModel.File" Width="1.5" PointX="12.75" PointY="0.5" IsExpanded="false" />
         <AssociationConnector Association="LADAutomationModel.TaskFile" />
         <AssociationConnector Association="LADAutomationModel.RuleTask" />
-        <EntityTypeShape EntityType="LADAutomationModel.CarryForwardRules" Width="1.5" PointX="12.75" PointY="3.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="LADAutomationModel.CarryForwardRules" Width="1.75" PointX="12.75" PointY="3.625" IsExpanded="false" />
         <AssociationConnector Association="LADAutomationModel.RuleCarryForwardRules" />
         <EntityTypeShape EntityType="LADAutomationModel.EmailTemplate" Width="1.5" PointX="8.25" PointY="2.75" IsExpanded="false" />
         <AssociationConnector Association="LADAutomationModel.TaskEmailTemplate" />
@@ -31,6 +31,8 @@
         <EntityTypeShape EntityType="LADAutomationModel.TaskStatus" Width="1.5" PointX="12.75" PointY="2.5" IsExpanded="false" />
         <AssociationConnector Association="LADAutomationModel.TaskTaskStatus" />
         <AssociationConnector Association="LADAutomationModel.StatusTaskStatus" />
+        <EntityTypeShape EntityType="LADAutomationModel.AuditTrail" Width="1.5" PointX="14.875" PointY="0.5" IsExpanded="false" />
+        <AssociationConnector Association="LADAutomationModel.TaskAuditTrail" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

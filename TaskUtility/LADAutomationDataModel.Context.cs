@@ -38,5 +38,6 @@ namespace TaskUtility
         public virtual DbSet<Email> Emails { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<TaskStatus> TaskStatus { get; set; }
+        public virtual DbSet<AuditTrail> AuditTrails { get; set; }
     }
 }

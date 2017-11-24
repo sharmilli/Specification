@@ -20,6 +20,7 @@ namespace TaskUtility
             this.Files = new HashSet<File>();
             this.EmailTemplates = new HashSet<EmailTemplate>();
             this.TaskStatus = new HashSet<TaskStatus>();
+            this.AuditTrails = new HashSet<AuditTrail>();
         }
     
         public int Id { get; set; }
@@ -35,5 +36,7 @@ namespace TaskUtility
         public virtual ICollection<EmailTemplate> EmailTemplates { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TaskStatus> TaskStatus { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AuditTrail> AuditTrails { get; set; }
     }
 }

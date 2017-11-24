@@ -426,6 +426,11 @@
             <End Role="Status" EntitySet="Status" />
             <End Role="TaskStatus" EntitySet="TaskStatus" />
           </AssociationSet>
+          <EntitySet Name="AuditTrails" EntityType="LADAutomationModel.AuditTrail" />
+          <AssociationSet Name="TaskAuditTrail" Association="LADAutomationModel.TaskAuditTrail">
+            <End Role="Task" EntitySet="Tasks" />
+            <End Role="AuditTrail" EntitySet="AuditTrails" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -515,6 +520,7 @@
           <NavigationProperty Name="Rule" Relationship="LADAutomationModel.RuleTask" FromRole="Task" ToRole="Rule" />
           <NavigationProperty Name="EmailTemplates" Relationship="LADAutomationModel.TaskEmailTemplate" FromRole="Task" ToRole="EmailTemplate" />
           <NavigationProperty Name="TaskStatus" Relationship="LADAutomationModel.TaskTaskStatus" FromRole="Task" ToRole="TaskStatus" />
+          <NavigationProperty Name="AuditTrails" Relationship="LADAutomationModel.TaskAuditTrail" FromRole="Task" ToRole="AuditTrail" />
         </EntityType>
         <Association Name="TaskTypeTask">
           <End Type="LADAutomationModel.TaskType" Role="TaskType" Multiplicity="1" />
@@ -619,6 +625,19 @@
         <Association Name="StatusTaskStatus">
           <End Type="LADAutomationModel.Status" Role="Status" Multiplicity="1" />
           <End Type="LADAutomationModel.TaskStatus" Role="TaskStatus" Multiplicity="*" />
+        </Association>
+        <EntityType Name="AuditTrail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskId" Type="Int64" Nullable="false" />
+          <Property Name="Log" Type="String" Nullable="false" />
+          <NavigationProperty Name="Task" Relationship="LADAutomationModel.TaskAuditTrail" FromRole="AuditTrail" ToRole="Task" />
+        </EntityType>
+        <Association Name="TaskAuditTrail">
+          <End Type="LADAutomationModel.Task" Role="Task" Multiplicity="1" />
+          <End Type="LADAutomationModel.AuditTrail" Role="AuditTrail" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>

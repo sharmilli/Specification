@@ -12,9 +12,6 @@ namespace TaskUtility
     {
         static void Main(string[] args)
         {
-            //XmlDocument xml = new XmlDocument(@"C:\Users\662942\documents\visual studio 2015\Projects\AIGLADAutomation\TaskUtility\BusinessConfiguration.");
-
-            // FileStream fs = new FileStream(@"C:\Users\662942\documents\visual studio 2015\Projects\AIGLADAutomation\TaskUtility\BusinessConfiguration.xml", FileMode.Open, FileAccess.Read);
             foreach (XElement level1Element in XElement.Load(@"C:\Users\662942\documents\visual studio 2015\Projects\AIGLADAutomation\TaskUtility\BusinessConfiguration.xml").Elements("Business"))
             {
                
