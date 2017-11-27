@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/24/2017 19:52:10
--- Generated from EDMX file: C:\Users\662942\documents\visual studio 2015\Projects\AIGLADAutomation\TaskUtility\LADAutomationDataModel.edmx
+-- Date Created: 11/27/2017 14:39:36
+-- Generated from EDMX file: C:\Users\662942\Documents\Visual Studio 2015\Projects\AIGLADAutomation\TaskUtility\LADAutomationDataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -56,6 +56,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_StatusTaskStatus]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TaskStatus] DROP CONSTRAINT [FK_StatusTaskStatus];
 GO
+IF OBJECT_ID(N'[dbo].[FK_TaskAuditTrail]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AuditTrails] DROP CONSTRAINT [FK_TaskAuditTrail];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -100,6 +103,9 @@ GO
 IF OBJECT_ID(N'[dbo].[TaskStatus]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TaskStatus];
 GO
+IF OBJECT_ID(N'[dbo].[AuditTrails]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[AuditTrails];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -131,9 +137,6 @@ GO
 -- Creating table 'UserCountryRoles'
 CREATE TABLE [dbo].[UserCountryRoles] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
-    [UserId] bigint  NOT NULL,
-    [CountryId] int  NOT NULL,
-    [RoleId] int  NOT NULL,
     [User_Id] bigint  NOT NULL,
     [Role_Id] int  NOT NULL,
     [Country_Id] int  NOT NULL
@@ -144,12 +147,10 @@ GO
 CREATE TABLE [dbo].[Rules] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [TaskId] bigint  NOT NULL,
-    [OwnerId] bigint  NOT NULL,
-    [RecipientId] bigint  NOT NULL,
     [BusinessDay] smallint  NOT NULL,
     [isRemaining] bit  NOT NULL,
-    [UserCountryRole_Id] bigint  NOT NULL
+    [UserCountryRole_Id] bigint  NOT NULL,
+    [UserCountryRole1_Id] bigint  NOT NULL
 );
 GO
 
@@ -165,7 +166,6 @@ CREATE TABLE [dbo].[Tasks] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Path] nvarchar(max)  NOT NULL,
-    [TaskTypeId] int  NOT NULL,
     [TaskType_Id] int  NOT NULL,
     [Rule_Id] bigint  NOT NULL
 );
@@ -175,7 +175,6 @@ GO
 CREATE TABLE [dbo].[Files] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [TaskId] int  NOT NULL,
     [Task_Id] int  NOT NULL
 );
 GO
@@ -183,7 +182,6 @@ GO
 -- Creating table 'CarryForwardRules'
 CREATE TABLE [dbo].[CarryForwardRules] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
-    [RuleId] bigint  NOT NULL,
     [PendingSince] datetime  NOT NULL,
     [Rule_Id] bigint  NOT NULL
 );
@@ -197,7 +195,6 @@ CREATE TABLE [dbo].[EmailTemplates] (
     [CC] nvarchar(max)  NOT NULL,
     [Subject] nvarchar(max)  NOT NULL,
     [Message] nvarchar(max)  NOT NULL,
-    [TaskId] int  NOT NULL,
     [Task_Id] int  NOT NULL
 );
 GO
@@ -210,9 +207,10 @@ CREATE TABLE [dbo].[Emails] (
     [CC] nvarchar(max)  NOT NULL,
     [Subject] nvarchar(max)  NOT NULL,
     [Message] nvarchar(max)  NOT NULL,
-    [TaskId] int  NOT NULL,
     [UserCountryRole_Id] bigint  NOT NULL,
-    [EmailTemplate_Id] bigint  NOT NULL
+    [EmailTemplate_Id] bigint  NOT NULL,
+    [UserCountryRole1_Id] bigint  NOT NULL,
+    [UserCountryRole2_Id] bigint  NOT NULL
 );
 GO
 
@@ -226,8 +224,6 @@ GO
 -- Creating table 'TaskStatus'
 CREATE TABLE [dbo].[TaskStatus] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
-    [TaskId] int  NOT NULL,
-    [StatusId] smallint  NOT NULL,
     [Task_Id] int  NOT NULL,
     [Status_Id] bigint  NOT NULL
 );
@@ -236,7 +232,6 @@ GO
 -- Creating table 'AuditTrails'
 CREATE TABLE [dbo].[AuditTrails] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [TaskId] bigint  NOT NULL,
     [Log] nvarchar(max)  NOT NULL,
     [Task_Id] int  NOT NULL
 );
@@ -542,6 +537,51 @@ GO
 CREATE INDEX [IX_FK_TaskAuditTrail]
 ON [dbo].[AuditTrails]
     ([Task_Id]);
+GO
+
+-- Creating foreign key on [UserCountryRole1_Id] in table 'Emails'
+ALTER TABLE [dbo].[Emails]
+ADD CONSTRAINT [FK_UserCountryRoleEmail1]
+    FOREIGN KEY ([UserCountryRole1_Id])
+    REFERENCES [dbo].[UserCountryRoles]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserCountryRoleEmail1'
+CREATE INDEX [IX_FK_UserCountryRoleEmail1]
+ON [dbo].[Emails]
+    ([UserCountryRole1_Id]);
+GO
+
+-- Creating foreign key on [UserCountryRole2_Id] in table 'Emails'
+ALTER TABLE [dbo].[Emails]
+ADD CONSTRAINT [FK_UserCountryRoleEmail2]
+    FOREIGN KEY ([UserCountryRole2_Id])
+    REFERENCES [dbo].[UserCountryRoles]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserCountryRoleEmail2'
+CREATE INDEX [IX_FK_UserCountryRoleEmail2]
+ON [dbo].[Emails]
+    ([UserCountryRole2_Id]);
+GO
+
+-- Creating foreign key on [UserCountryRole1_Id] in table 'Rules'
+ALTER TABLE [dbo].[Rules]
+ADD CONSTRAINT [FK_UserCountryRoleRule1]
+    FOREIGN KEY ([UserCountryRole1_Id])
+    REFERENCES [dbo].[UserCountryRoles]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UserCountryRoleRule1'
+CREATE INDEX [IX_FK_UserCountryRoleRule1]
+ON [dbo].[Rules]
+    ([UserCountryRole1_Id]);
 GO
 
 -- --------------------------------------------------

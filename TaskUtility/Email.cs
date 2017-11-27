@@ -15,14 +15,12 @@ namespace TaskUtility
     public partial class Email
     {
         public long Id { get; set; }
-        public string From { get; set; }
-        public string To { get; set; }
-        public string CC { get; set; }
         public string Subject { get; set; }
         public string Message { get; set; }
-        public int TaskId { get; set; }
     
-        public virtual UserCountryRole UserCountryRole { get; set; }
+        public virtual UserCountryRole FromUserCountryRole { get; set; }
         public virtual EmailTemplate EmailTemplate { get; set; }
+        public virtual UserCountryRole ToUserCountryRole { get; set; }
+        public virtual UserCountryRole CCUserCountryRole2 { get; set; }
     }
 }

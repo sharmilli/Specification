@@ -33,6 +33,9 @@
         <AssociationConnector Association="LADAutomationModel.StatusTaskStatus" />
         <EntityTypeShape EntityType="LADAutomationModel.AuditTrail" Width="1.5" PointX="14.875" PointY="0.5" IsExpanded="false" />
         <AssociationConnector Association="LADAutomationModel.TaskAuditTrail" />
+        <AssociationConnector Association="LADAutomationModel.UserCountryRoleEmail1" />
+        <AssociationConnector Association="LADAutomationModel.UserCountryRoleEmail2" />
+        <AssociationConnector Association="LADAutomationModel.UserCountryRoleRule1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

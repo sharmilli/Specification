@@ -183,7 +183,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>LADAutomation.mdf</DependentUpon>
     </Content>
-    <Content Include="BusinessConfiguration.xml" />
+    <Content Include="AppData\BusinessConfiguration.xml">
+	<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>BusinessConfiguration.xml</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

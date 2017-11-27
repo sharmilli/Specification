@@ -15,7 +15,6 @@ namespace TaskUtility
     public partial class CarryForwardRules
     {
         public long Id { get; set; }
-        public long RuleId { get; set; }
         public System.DateTime PendingSince { get; set; }
     
         public virtual Rule Rule { get; set; }

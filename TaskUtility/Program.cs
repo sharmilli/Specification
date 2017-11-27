@@ -12,7 +12,7 @@ namespace TaskUtility
     {
         static void Main(string[] args)
         {
-            foreach (XElement level1Element in XElement.Load(@"C:\Users\662942\documents\visual studio 2015\Projects\AIGLADAutomation\TaskUtility\BusinessConfiguration.xml").Elements("Business"))
+            foreach (XElement level1Element in XElement.Load(@"AppData\BusinessConfiguration.xml").Elements("Business"))
             {
                
 
@@ -22,14 +22,14 @@ namespace TaskUtility
                 var remBusinessDays = CalendarUtility.RemainingBusinessDaysInMonth();
                 var nthBusinessDay = CalendarUtility.RemainingBusinessDaysInMonth() == referenceDate ? CalendarUtility.RemainingBusinessDaysInMonth() : CalendarUtility.NthBusinessDayOfMonth();
                 var isFromEnd = remBusinessDays == referenceDate ? true : false;
-                BusinessConfiguration bc = new BusinessConfiguration();
-                var todaysRule = bc.GetBusinessRules(countryId,nthBusinessDay, isFromEnd);
+                var bc = new BusinessConfiguration(countryId, nthBusinessDay, isFromEnd);
+                //Get the rule id and fetch the corresponding tasks
                 //perform todays task
                 CarryForwardBusinessConfiguration carryConfig = new CarryForwardBusinessConfiguration();
                 var carryForwardRules = carryConfig.GetCarryForwardBusinessRules();
                 foreach (var carryFwdRule in carryForwardRules)
                 {
-
+                    //Get the rule id from carry forward rule object and invoke the corresponding tasks
 
                 }
             }

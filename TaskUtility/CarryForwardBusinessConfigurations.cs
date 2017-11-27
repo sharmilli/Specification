@@ -6,7 +6,10 @@ namespace TaskUtility
 {
     public class CarryForwardBusinessConfiguration : ICarryForwardBusinessConfiguration
     {
-        public CarryForwardBusinessConfiguration() { }
+        private CarryForwardBusinessConfiguration() { }
+        public CarryForwardBusinessConfiguration(int countryId) {
+            ExecuteCarryForwardTask(countryId);
+        }
         public int Id { get; set; }
         public long RuleId { get; set; }
         public DateTime PendingSince { get; set; }
@@ -25,11 +28,11 @@ namespace TaskUtility
 
         public Freequency RuleFreequency { get; set; }
 
-        public List<CarryForwardBusinessConfiguration> GetCarryForwardBusinessRules()
+        public void ExecuteCarryForwardTask(int countryId)
         {
             List<CarryForwardBusinessConfiguration> carryForwardRules = new List<CarryForwardBusinessConfiguration>();
             //connect to the database and fetch the list of carry forward rules
-            using (LADAutomationEntities context = new LADAutomationEntities())
+            /*using (LADAutomationEntities context = new LADAutomationEntities())
             {
                 carryForwardRules = (from carryRules in context.CarryForwardRules
                                         join rules in context.Rules on carryRules.RuleId equals rules.Id
@@ -47,19 +50,19 @@ namespace TaskUtility
                                             NthWorkingDayOfMonth = rules.BusinessDay,
                                             PendingSince = carryRules.PendingSince
                                         }).ToList();
-            }
-            return carryForwardRules;
+            }*/
+            //return carryForwardRules;
         }
         public void AddCarryForwardRule(BusinessConfiguration businessConfiguration)
         {
             // If the rule execution is not successful, add record the carryforward table
             using (LADAutomationEntities context = new LADAutomationEntities())
             {
-                var carryForward = new CarryForwardRules();
+                /*var carryForward = new CarryForwardRules();
                 carryForward.PendingSince = DateTime.Now;
-                carryForward.RuleId = businessConfiguration.RuleId;
+                carryForward.CarryForwardRuleId = businessConfiguration.RuleId;
                 context.CarryForwardRules.Add(carryForward);
-                context.SaveChanges();
+                context.SaveChanges();*/
 
 
             }

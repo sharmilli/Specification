@@ -23,9 +23,6 @@ namespace TaskUtility
     
         public long Id { get; set; }
         public string Name { get; set; }
-        public long TaskId { get; set; }
-        public long OwnerId { get; set; }
-        public long RecipientId { get; set; }
         public short BusinessDay { get; set; }
         public bool isRemaining { get; set; }
     
@@ -34,5 +31,6 @@ namespace TaskUtility
         public virtual ICollection<Task> Tasks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CarryForwardRules> CarryForwardRules { get; set; }
+        public virtual UserCountryRole UserCountryRole1 { get; set; }
     }
 }

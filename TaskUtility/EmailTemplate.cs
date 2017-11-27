@@ -26,7 +26,6 @@ namespace TaskUtility
         public string CC { get; set; }
         public string Subject { get; set; }
         public string Message { get; set; }
-        public int TaskId { get; set; }
     
         public virtual Task Task { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

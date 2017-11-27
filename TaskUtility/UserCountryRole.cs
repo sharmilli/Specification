@@ -18,20 +18,14 @@ namespace TaskUtility
         public UserCountryRole()
         {
             this.Rules = new HashSet<Rule>();
-            this.Emails = new HashSet<Email>();
         }
     
         public long Id { get; set; }
-        public long UserId { get; set; }
-        public int CountryId { get; set; }
-        public int RoleId { get; set; }
     
         public virtual User User { get; set; }
         public virtual Role Role { get; set; }
         public virtual Country Country { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rule> Rules { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Email> Emails { get; set; }
     }
 }

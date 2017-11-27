@@ -2,12 +2,17 @@
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Linq;
+
 namespace TaskUtility
 {
 
     public class BusinessConfiguration : IBusinessConfiguration
     {
-        public BusinessConfiguration() { }
+        private BusinessConfiguration() { }
+        public BusinessConfiguration(int countryId, int dayOfTheMonth, bool isFromEnd) {
+            //Execute the rules when the object is created
+            GetBusinessRules(countryId, dayOfTheMonth, isFromEnd);
+        }
         public long RuleId { get; set; }
         public int NthWorkingDayOfMonth { get; set; }
         
@@ -22,11 +27,14 @@ namespace TaskUtility
 
         public Freequency RuleFreequency { get; set; }
         
-        public BusinessConfiguration GetBusinessRules(int countryId, int dayOfTheMonth, bool isFromEnd)
+        private BusinessConfiguration GetBusinessRules(int countryId, int dayOfTheMonth, bool isFromEnd)
         {
-            var bc = new BusinessConfiguration();
+            RuleId = 1;
+            NthWorkingDayOfMonth = dayOfTheMonth;
+            Owner = "s";
+            
             //connect to the database and fetch the list of Business rules greater than the nth day
-            using (LADAutomationEntities context = new LADAutomationEntities())
+            /*using (LADAutomationEntities context = new LADAutomationEntities())
             {
                 bc = (from businessConfig in context.Rules
                          join userCountryRole in context.UserCountryRoles on businessConfig.OwnerId equals userCountryRole.Id
@@ -40,8 +48,8 @@ namespace TaskUtility
                              Owner = owner.Email,
                              Recipient = recipient.Email
                          }).FirstOrDefault();
-            }
-            return bc;
+            }*/
+            return this;
         }
         public void UpdateBusinessRule(BusinessConfiguration businessConfiguration)
         {

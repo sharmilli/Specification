@@ -15,7 +15,6 @@ namespace TaskUtility
     public partial class AuditTrail
     {
         public int Id { get; set; }
-        public long TaskId { get; set; }
         public string Log { get; set; }
     
         public virtual Task Task { get; set; }
