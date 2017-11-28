@@ -22,16 +22,15 @@ namespace TaskUtility
                 var remBusinessDays = CalendarUtility.RemainingBusinessDaysInMonth();
                 var nthBusinessDay = CalendarUtility.RemainingBusinessDaysInMonth() == referenceDate ? CalendarUtility.RemainingBusinessDaysInMonth() : CalendarUtility.NthBusinessDayOfMonth();
                 var isFromEnd = remBusinessDays == referenceDate ? true : false;
+                //Fetch the business configuration set for the day
                 var bc = new BusinessConfiguration(countryId, nthBusinessDay, isFromEnd);
-                //Get the rule id and fetch the corresponding tasks
-                //perform todays task
-                CarryForwardBusinessConfiguration carryConfig = new CarryForwardBusinessConfiguration();
-                var carryForwardRules = carryConfig.GetCarryForwardBusinessRules();
-                foreach (var carryFwdRule in carryForwardRules)
+                //Execute the pending tasks from previous day's business rules
+                CarryForwardBusinessConfiguration carryConfig = new CarryForwardBusinessConfiguration(bc.CountryId);
+                if (bc.ExecuteBusinessRule(bc))
                 {
-                    //Get the rule id from carry forward rule object and invoke the corresponding tasks
-
+                    carryConfig = new CarryForwardBusinessConfiguration(bc);
                 }
+
             }
             Console.ReadKey();
 

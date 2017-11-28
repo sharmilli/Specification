@@ -8,12 +8,14 @@ namespace TaskUtility
 
     public class BusinessConfiguration : IBusinessConfiguration
     {
-        private BusinessConfiguration() { }
+        public BusinessConfiguration() { }
         public BusinessConfiguration(int countryId, int dayOfTheMonth, bool isFromEnd) {
             //Execute the rules when the object is created
-            GetBusinessRules(countryId, dayOfTheMonth, isFromEnd);
+            GetBusinessRule(countryId, dayOfTheMonth, isFromEnd);
         }
         public long RuleId { get; set; }
+
+        public int CountryId { get; set; }
         public int NthWorkingDayOfMonth { get; set; }
         
         public int RemainingWorkingDaysOfMonth { get; set; }
@@ -27,12 +29,9 @@ namespace TaskUtility
 
         public Freequency RuleFreequency { get; set; }
         
-        private BusinessConfiguration GetBusinessRules(int countryId, int dayOfTheMonth, bool isFromEnd)
+        private BusinessConfiguration GetBusinessRule(int countryId, int dayOfTheMonth, bool isFromEnd)
         {
-            RuleId = 1;
-            NthWorkingDayOfMonth = dayOfTheMonth;
-            Owner = "s";
-            
+            CountryId = countryId;
             //connect to the database and fetch the list of Business rules greater than the nth day
             /*using (LADAutomationEntities context = new LADAutomationEntities())
             {
@@ -51,12 +50,12 @@ namespace TaskUtility
             }*/
             return this;
         }
-        public void UpdateBusinessRule(BusinessConfiguration businessConfiguration)
+        public bool ExecuteBusinessRule(BusinessConfiguration businessConfiguration)
         {
 
             // If the rule execution is successful
-           
 
+            return true;
         }
 
     }

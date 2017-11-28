@@ -6,12 +6,17 @@ namespace TaskUtility
 {
     public class CarryForwardBusinessConfiguration : ICarryForwardBusinessConfiguration
     {
-        private CarryForwardBusinessConfiguration() { }
         public CarryForwardBusinessConfiguration(int countryId) {
-            ExecuteCarryForwardTask(countryId);
+            ExecuteCarryForwardTasks(countryId);
         }
+        public CarryForwardBusinessConfiguration(IBusinessConfiguration businessConfiguration) {
+            AddCarryForwardRule(businessConfiguration);
+        }
+        
         public int Id { get; set; }
         public long RuleId { get; set; }
+
+        public int CountryId { get; set; }
         public DateTime PendingSince { get; set; }
 
         private int dayOfMonth;
@@ -28,9 +33,9 @@ namespace TaskUtility
 
         public Freequency RuleFreequency { get; set; }
 
-        public void ExecuteCarryForwardTask(int countryId)
+        public void ExecuteCarryForwardTasks(int countryId)
         {
-            List<CarryForwardBusinessConfiguration> carryForwardRules = new List<CarryForwardBusinessConfiguration>();
+            //List<CarryForwardBusinessConfiguration> carryForwardRules = new List<CarryForwardBusinessConfiguration>();
             //connect to the database and fetch the list of carry forward rules
             /*using (LADAutomationEntities context = new LADAutomationEntities())
             {
@@ -53,10 +58,10 @@ namespace TaskUtility
             }*/
             //return carryForwardRules;
         }
-        public void AddCarryForwardRule(BusinessConfiguration businessConfiguration)
+        private void AddCarryForwardRule(IBusinessConfiguration businessConfiguration)
         {
             // If the rule execution is not successful, add record the carryforward table
-            using (LADAutomationEntities context = new LADAutomationEntities())
+            //using (LADAutomationEntities context = new LADAutomationEntities())
             {
                 /*var carryForward = new CarryForwardRules();
                 carryForward.PendingSince = DateTime.Now;
