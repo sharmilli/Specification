@@ -4,9 +4,419 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="LADAutomationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="LADAutomationModelStoreContainer" />
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="LADAutomationModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="LADAutomationModelStoreContainer">
+    <EntitySet Name="Users" EntityType="LADAutomationModel.Store.Users" store:Type="Tables" Schema="TaskUtility" />
+    <EntitySet Name="Roles" EntityType="LADAutomationModel.Store.Roles" store:Type="Tables" Schema="TaskUtility" />
+    <EntitySet Name="Countries" EntityType="LADAutomationModel.Store.Countries" store:Type="Tables" Schema="TaskUtility" />
+    <EntitySet Name="UserCountryRoles" EntityType="LADAutomationModel.Store.UserCountryRoles" store:Type="Tables" Schema="TaskUtility" />
+    <EntitySet Name="Rules" EntityType="LADAutomationModel.Store.Rules" store:Type="Tables" Schema="TaskUtility" />
+    <EntitySet Name="TaskTypes" EntityType="LADAutomationModel.Store.TaskTypes" store:Type="Tables" Schema="TaskUtility" />
+    <EntitySet Name="Tasks" EntityType="LADAutomationModel.Store.Tasks" store:Type="Tables" Schema="TaskUtility" />
+    <EntitySet Name="Files" EntityType="LADAutomationModel.Store.Files" store:Type="Tables" Schema="TaskUtility" />
+    <EntitySet Name="CarryForwardRules" EntityType="LADAutomationModel.Store.CarryForwardRules" store:Type="Tables" Schema="TaskUtility" />
+    <EntitySet Name="EmailTemplates" EntityType="LADAutomationModel.Store.EmailTemplates" store:Type="Tables" Schema="TaskUtility" />
+    <EntitySet Name="Emails" EntityType="LADAutomationModel.Store.Emails" store:Type="Tables" Schema="TaskUtility" />
+    <EntitySet Name="Status" EntityType="LADAutomationModel.Store.Status" store:Type="Tables" Schema="TaskUtility" />
+    <EntitySet Name="TaskStatus" EntityType="LADAutomationModel.Store.TaskStatus" store:Type="Tables" Schema="TaskUtility" />
+    <EntitySet Name="AuditTrails" EntityType="LADAutomationModel.Store.AuditTrails" store:Type="Tables" Schema="TaskUtility" />
+    <AssociationSet Name="UserUserCountryRole" Association="LADAutomationModel.Store.UserUserCountryRole">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserCountryRole" EntitySet="UserCountryRoles" />
+    </AssociationSet>
+    <AssociationSet Name="RoleUserCountryRole" Association="LADAutomationModel.Store.RoleUserCountryRole">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UserCountryRole" EntitySet="UserCountryRoles" />
+    </AssociationSet>
+    <AssociationSet Name="CountryUserCountryRole" Association="LADAutomationModel.Store.CountryUserCountryRole">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="UserCountryRole" EntitySet="UserCountryRoles" />
+    </AssociationSet>
+    <AssociationSet Name="TaskTypeTask" Association="LADAutomationModel.Store.TaskTypeTask">
+      <End Role="TaskType" EntitySet="TaskTypes" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="UserCountryRoleRule" Association="LADAutomationModel.Store.UserCountryRoleRule">
+      <End Role="UserCountryRole" EntitySet="UserCountryRoles" />
+      <End Role="Rule" EntitySet="Rules" />
+    </AssociationSet>
+    <AssociationSet Name="TaskFile" Association="LADAutomationModel.Store.TaskFile">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="File" EntitySet="Files" />
+    </AssociationSet>
+    <AssociationSet Name="RuleTask" Association="LADAutomationModel.Store.RuleTask">
+      <End Role="Rule" EntitySet="Rules" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="RuleCarryForwardRules" Association="LADAutomationModel.Store.RuleCarryForwardRules">
+      <End Role="Rule" EntitySet="Rules" />
+      <End Role="CarryForwardRules" EntitySet="CarryForwardRules" />
+    </AssociationSet>
+    <AssociationSet Name="TaskEmailTemplate" Association="LADAutomationModel.Store.TaskEmailTemplate">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="EmailTemplate" EntitySet="EmailTemplates" />
+    </AssociationSet>
+    <AssociationSet Name="UserCountryRoleEmail" Association="LADAutomationModel.Store.UserCountryRoleEmail">
+      <End Role="UserCountryRole" EntitySet="UserCountryRoles" />
+      <End Role="Email" EntitySet="Emails" />
+    </AssociationSet>
+    <AssociationSet Name="EmailTemplateEmail" Association="LADAutomationModel.Store.EmailTemplateEmail">
+      <End Role="EmailTemplate" EntitySet="EmailTemplates" />
+      <End Role="Email" EntitySet="Emails" />
+    </AssociationSet>
+    <AssociationSet Name="TaskTaskStatus" Association="LADAutomationModel.Store.TaskTaskStatus">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="TaskStatus" EntitySet="TaskStatus" />
+    </AssociationSet>
+    <AssociationSet Name="StatusTaskStatus" Association="LADAutomationModel.Store.StatusTaskStatus">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="TaskStatus" EntitySet="TaskStatus" />
+    </AssociationSet>
+    <AssociationSet Name="TaskAuditTrail" Association="LADAutomationModel.Store.TaskAuditTrail">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="AuditTrail" EntitySet="AuditTrails" />
+    </AssociationSet>
+    <AssociationSet Name="UserCountryRoleEmail1" Association="LADAutomationModel.Store.UserCountryRoleEmail1">
+      <End Role="UserCountryRole" EntitySet="UserCountryRoles" />
+      <End Role="Email" EntitySet="Emails" />
+    </AssociationSet>
+    <AssociationSet Name="UserCountryRoleEmail2" Association="LADAutomationModel.Store.UserCountryRoleEmail2">
+      <End Role="UserCountryRole" EntitySet="UserCountryRoles" />
+      <End Role="Email" EntitySet="Emails" />
+    </AssociationSet>
+    <AssociationSet Name="UserCountryRoleRule1" Association="LADAutomationModel.Store.UserCountryRoleRule1">
+      <End Role="UserCountryRole" EntitySet="UserCountryRoles" />
+      <End Role="Rule" EntitySet="Rules" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Q1Month" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserCountryRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Id" Type="bigint" Nullable="false" />
+    <Property Name="Role_Id" Type="int" Nullable="false" />
+    <Property Name="Country_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rules">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BusinessDay" Type="smallint" Nullable="false" />
+    <Property Name="isRemaining" Type="bit" Nullable="false" />
+    <Property Name="UserCountryRole_Id" Type="bigint" Nullable="false" />
+    <Property Name="UserCountryRole1_Id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaskTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tasks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TaskType_Id" Type="int" Nullable="false" />
+    <Property Name="Rule_Id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Files">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Task_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CarryForwardRules">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PendingSince" Type="datetime" Nullable="false" />
+    <Property Name="Rule_Id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmailTemplates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="From" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="To" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CC" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Task_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Emails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FromUserCountryRole_Id" Type="bigint" Nullable="false" />
+    <Property Name="EmailTemplate_Id" Type="bigint" Nullable="false" />
+    <Property Name="ToUserCountryRole_Id" Type="bigint" Nullable="false" />
+    <Property Name="CCUserCountryRole2_Id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaskStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Task_Id" Type="int" Nullable="false" />
+    <Property Name="Status_Id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AuditTrails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Log" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Task_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="UserUserCountryRole">
+    <End Role="User" Type="LADAutomationModel.Store.Users" Multiplicity="1" />
+    <End Role="UserCountryRole" Type="LADAutomationModel.Store.UserCountryRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserCountryRole">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoleUserCountryRole">
+    <End Role="Role" Type="LADAutomationModel.Store.Roles" Multiplicity="1" />
+    <End Role="UserCountryRole" Type="LADAutomationModel.Store.UserCountryRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserCountryRole">
+        <PropertyRef Name="Role_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CountryUserCountryRole">
+    <End Role="Country" Type="LADAutomationModel.Store.Countries" Multiplicity="1" />
+    <End Role="UserCountryRole" Type="LADAutomationModel.Store.UserCountryRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserCountryRole">
+        <PropertyRef Name="Country_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TaskTypeTask">
+    <End Role="TaskType" Type="LADAutomationModel.Store.TaskTypes" Multiplicity="1" />
+    <End Role="Task" Type="LADAutomationModel.Store.Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaskType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="TaskType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserCountryRoleRule">
+    <End Role="UserCountryRole" Type="LADAutomationModel.Store.UserCountryRoles" Multiplicity="1" />
+    <End Role="Rule" Type="LADAutomationModel.Store.Rules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserCountryRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rule">
+        <PropertyRef Name="UserCountryRole_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TaskFile">
+    <End Role="Task" Type="LADAutomationModel.Store.Tasks" Multiplicity="1" />
+    <End Role="File" Type="LADAutomationModel.Store.Files" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="File">
+        <PropertyRef Name="Task_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RuleTask">
+    <End Role="Rule" Type="LADAutomationModel.Store.Rules" Multiplicity="1" />
+    <End Role="Task" Type="LADAutomationModel.Store.Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Rule_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RuleCarryForwardRules">
+    <End Role="Rule" Type="LADAutomationModel.Store.Rules" Multiplicity="1" />
+    <End Role="CarryForwardRules" Type="LADAutomationModel.Store.CarryForwardRules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rule">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CarryForwardRules">
+        <PropertyRef Name="Rule_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TaskEmailTemplate">
+    <End Role="Task" Type="LADAutomationModel.Store.Tasks" Multiplicity="1" />
+    <End Role="EmailTemplate" Type="LADAutomationModel.Store.EmailTemplates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmailTemplate">
+        <PropertyRef Name="Task_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserCountryRoleEmail">
+    <End Role="UserCountryRole" Type="LADAutomationModel.Store.UserCountryRoles" Multiplicity="1" />
+    <End Role="Email" Type="LADAutomationModel.Store.Emails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserCountryRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Email">
+        <PropertyRef Name="FromUserCountryRole_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EmailTemplateEmail">
+    <End Role="EmailTemplate" Type="LADAutomationModel.Store.EmailTemplates" Multiplicity="1" />
+    <End Role="Email" Type="LADAutomationModel.Store.Emails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmailTemplate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Email">
+        <PropertyRef Name="EmailTemplate_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TaskTaskStatus">
+    <End Role="Task" Type="LADAutomationModel.Store.Tasks" Multiplicity="1" />
+    <End Role="TaskStatus" Type="LADAutomationModel.Store.TaskStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskStatus">
+        <PropertyRef Name="Task_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StatusTaskStatus">
+    <End Role="Status" Type="LADAutomationModel.Store.Status" Multiplicity="1" />
+    <End Role="TaskStatus" Type="LADAutomationModel.Store.TaskStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TaskStatus">
+        <PropertyRef Name="Status_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TaskAuditTrail">
+    <End Role="Task" Type="LADAutomationModel.Store.Tasks" Multiplicity="1" />
+    <End Role="AuditTrail" Type="LADAutomationModel.Store.AuditTrails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AuditTrail">
+        <PropertyRef Name="Task_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserCountryRoleEmail1">
+    <End Role="UserCountryRole" Type="LADAutomationModel.Store.UserCountryRoles" Multiplicity="1" />
+    <End Role="Email" Type="LADAutomationModel.Store.Emails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserCountryRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Email">
+        <PropertyRef Name="ToUserCountryRole_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserCountryRoleEmail2">
+    <End Role="UserCountryRole" Type="LADAutomationModel.Store.UserCountryRoles" Multiplicity="1" />
+    <End Role="Email" Type="LADAutomationModel.Store.Emails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserCountryRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Email">
+        <PropertyRef Name="CCUserCountryRole2_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserCountryRoleRule1">
+    <End Role="UserCountryRole" Type="LADAutomationModel.Store.UserCountryRoles" Multiplicity="1" />
+    <End Role="Rule" Type="LADAutomationModel.Store.Rules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserCountryRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rule">
+        <PropertyRef Name="UserCountryRole1_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LADAutomationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -295,7 +705,263 @@
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="LADAutomationModelStoreContainer" CdmEntityContainer="LADAutomationEntities">
-    </EntityContainerMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(LADAutomationModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="IsTypeOf(LADAutomationModel.Role)">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="IsTypeOf(LADAutomationModel.Country)">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Q1Month" ColumnName="Q1Month" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserCountryRoles">
+      <EntityTypeMapping TypeName="IsTypeOf(LADAutomationModel.UserCountryRole)">
+        <MappingFragment StoreEntitySet="UserCountryRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rules">
+      <EntityTypeMapping TypeName="IsTypeOf(LADAutomationModel.Rule)">
+        <MappingFragment StoreEntitySet="Rules">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="BusinessDay" ColumnName="BusinessDay" />
+          <ScalarProperty Name="isRemaining" ColumnName="isRemaining" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaskTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(LADAutomationModel.TaskType)">
+        <MappingFragment StoreEntitySet="TaskTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="IsTypeOf(LADAutomationModel.Task)">
+        <MappingFragment StoreEntitySet="Tasks">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Files">
+      <EntityTypeMapping TypeName="IsTypeOf(LADAutomationModel.File)">
+        <MappingFragment StoreEntitySet="Files">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CarryForwardRules">
+      <EntityTypeMapping TypeName="IsTypeOf(LADAutomationModel.CarryForwardRules)">
+        <MappingFragment StoreEntitySet="CarryForwardRules">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PendingSince" ColumnName="PendingSince" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailTemplates">
+      <EntityTypeMapping TypeName="IsTypeOf(LADAutomationModel.EmailTemplate)">
+        <MappingFragment StoreEntitySet="EmailTemplates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="From" ColumnName="From" />
+          <ScalarProperty Name="To" ColumnName="To" />
+          <ScalarProperty Name="CC" ColumnName="CC" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emails">
+      <EntityTypeMapping TypeName="IsTypeOf(LADAutomationModel.Email)">
+        <MappingFragment StoreEntitySet="Emails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="IsTypeOf(LADAutomationModel.Status)">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaskStatus">
+      <EntityTypeMapping TypeName="IsTypeOf(LADAutomationModel.TaskStatus)">
+        <MappingFragment StoreEntitySet="TaskStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuditTrails">
+      <EntityTypeMapping TypeName="IsTypeOf(LADAutomationModel.AuditTrail)">
+        <MappingFragment StoreEntitySet="AuditTrails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Log" ColumnName="Log" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="UserUserCountryRole" TypeName="LADAutomationModel.UserUserCountryRole" StoreEntitySet="UserCountryRoles">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="UserCountryRole">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RoleUserCountryRole" TypeName="LADAutomationModel.RoleUserCountryRole" StoreEntitySet="UserCountryRoles">
+      <EndProperty Name="Role">
+        <ScalarProperty Name="Id" ColumnName="Role_Id" />
+      </EndProperty>
+      <EndProperty Name="UserCountryRole">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CountryUserCountryRole" TypeName="LADAutomationModel.CountryUserCountryRole" StoreEntitySet="UserCountryRoles">
+      <EndProperty Name="Country">
+        <ScalarProperty Name="Id" ColumnName="Country_Id" />
+      </EndProperty>
+      <EndProperty Name="UserCountryRole">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TaskTypeTask" TypeName="LADAutomationModel.TaskTypeTask" StoreEntitySet="Tasks">
+      <EndProperty Name="TaskType">
+        <ScalarProperty Name="Id" ColumnName="TaskType_Id" />
+      </EndProperty>
+      <EndProperty Name="Task">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserCountryRoleRule" TypeName="LADAutomationModel.UserCountryRoleRule" StoreEntitySet="Rules">
+      <EndProperty Name="UserCountryRole">
+        <ScalarProperty Name="Id" ColumnName="UserCountryRole_Id" />
+      </EndProperty>
+      <EndProperty Name="Rule">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TaskFile" TypeName="LADAutomationModel.TaskFile" StoreEntitySet="Files">
+      <EndProperty Name="Task">
+        <ScalarProperty Name="Id" ColumnName="Task_Id" />
+      </EndProperty>
+      <EndProperty Name="File">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RuleTask" TypeName="LADAutomationModel.RuleTask" StoreEntitySet="Tasks">
+      <EndProperty Name="Rule">
+        <ScalarProperty Name="Id" ColumnName="Rule_Id" />
+      </EndProperty>
+      <EndProperty Name="Task">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RuleCarryForwardRules" TypeName="LADAutomationModel.RuleCarryForwardRules" StoreEntitySet="CarryForwardRules">
+      <EndProperty Name="Rule">
+        <ScalarProperty Name="Id" ColumnName="Rule_Id" />
+      </EndProperty>
+      <EndProperty Name="CarryForwardRules">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TaskEmailTemplate" TypeName="LADAutomationModel.TaskEmailTemplate" StoreEntitySet="EmailTemplates">
+      <EndProperty Name="Task">
+        <ScalarProperty Name="Id" ColumnName="Task_Id" />
+      </EndProperty>
+      <EndProperty Name="EmailTemplate">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserCountryRoleEmail" TypeName="LADAutomationModel.UserCountryRoleEmail" StoreEntitySet="Emails">
+      <EndProperty Name="UserCountryRole">
+        <ScalarProperty Name="Id" ColumnName="FromUserCountryRole_Id" />
+      </EndProperty>
+      <EndProperty Name="Email">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EmailTemplateEmail" TypeName="LADAutomationModel.EmailTemplateEmail" StoreEntitySet="Emails">
+      <EndProperty Name="EmailTemplate">
+        <ScalarProperty Name="Id" ColumnName="EmailTemplate_Id" />
+      </EndProperty>
+      <EndProperty Name="Email">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TaskTaskStatus" TypeName="LADAutomationModel.TaskTaskStatus" StoreEntitySet="TaskStatus">
+      <EndProperty Name="Task">
+        <ScalarProperty Name="Id" ColumnName="Task_Id" />
+      </EndProperty>
+      <EndProperty Name="TaskStatus">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="StatusTaskStatus" TypeName="LADAutomationModel.StatusTaskStatus" StoreEntitySet="TaskStatus">
+      <EndProperty Name="Status">
+        <ScalarProperty Name="Id" ColumnName="Status_Id" />
+      </EndProperty>
+      <EndProperty Name="TaskStatus">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TaskAuditTrail" TypeName="LADAutomationModel.TaskAuditTrail" StoreEntitySet="AuditTrails">
+      <EndProperty Name="Task">
+        <ScalarProperty Name="Id" ColumnName="Task_Id" />
+      </EndProperty>
+      <EndProperty Name="AuditTrail">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserCountryRoleEmail1" TypeName="LADAutomationModel.UserCountryRoleEmail1" StoreEntitySet="Emails">
+      <EndProperty Name="UserCountryRole">
+        <ScalarProperty Name="Id" ColumnName="ToUserCountryRole_Id" />
+      </EndProperty>
+      <EndProperty Name="Email">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserCountryRoleEmail2" TypeName="LADAutomationModel.UserCountryRoleEmail2" StoreEntitySet="Emails">
+      <EndProperty Name="UserCountryRole">
+        <ScalarProperty Name="Id" ColumnName="CCUserCountryRole2_Id" />
+      </EndProperty>
+      <EndProperty Name="Email">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserCountryRoleRule1" TypeName="LADAutomationModel.UserCountryRoleRule1" StoreEntitySet="Rules">
+      <EndProperty Name="UserCountryRole">
+        <ScalarProperty Name="Id" ColumnName="UserCountryRole1_Id" />
+      </EndProperty>
+      <EndProperty Name="Rule">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/27/2017 14:39:36
+-- Date Created: 11/28/2017 12:43:38
 -- Generated from EDMX file: C:\Users\662942\Documents\Visual Studio 2015\Projects\AIGLADAutomation\TaskUtility\LADAutomationDataModel.edmx
 -- --------------------------------------------------
 
@@ -10,109 +10,25 @@ SET QUOTED_IDENTIFIER OFF;
 GO
 USE [LADAutomation];
 GO
-IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
+IF SCHEMA_ID(N'TaskUtility') IS NULL EXECUTE(N'CREATE SCHEMA [TaskUtility]');
 GO
 
 -- --------------------------------------------------
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_UserUserCountryRole]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[UserCountryRoles] DROP CONSTRAINT [FK_UserUserCountryRole];
-GO
-IF OBJECT_ID(N'[dbo].[FK_RoleUserCountryRole]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[UserCountryRoles] DROP CONSTRAINT [FK_RoleUserCountryRole];
-GO
-IF OBJECT_ID(N'[dbo].[FK_CountryUserCountryRole]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[UserCountryRoles] DROP CONSTRAINT [FK_CountryUserCountryRole];
-GO
-IF OBJECT_ID(N'[dbo].[FK_TaskTypeTask]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Tasks] DROP CONSTRAINT [FK_TaskTypeTask];
-GO
-IF OBJECT_ID(N'[dbo].[FK_UserCountryRoleRule]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Rules] DROP CONSTRAINT [FK_UserCountryRoleRule];
-GO
-IF OBJECT_ID(N'[dbo].[FK_TaskFile]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Files] DROP CONSTRAINT [FK_TaskFile];
-GO
-IF OBJECT_ID(N'[dbo].[FK_RuleTask]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Tasks] DROP CONSTRAINT [FK_RuleTask];
-GO
-IF OBJECT_ID(N'[dbo].[FK_RuleCarryForwardRules]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[CarryForwardRules] DROP CONSTRAINT [FK_RuleCarryForwardRules];
-GO
-IF OBJECT_ID(N'[dbo].[FK_TaskEmailTemplate]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[EmailTemplates] DROP CONSTRAINT [FK_TaskEmailTemplate];
-GO
-IF OBJECT_ID(N'[dbo].[FK_UserCountryRoleEmail]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Emails] DROP CONSTRAINT [FK_UserCountryRoleEmail];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EmailTemplateEmail]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Emails] DROP CONSTRAINT [FK_EmailTemplateEmail];
-GO
-IF OBJECT_ID(N'[dbo].[FK_TaskTaskStatus]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[TaskStatus] DROP CONSTRAINT [FK_TaskTaskStatus];
-GO
-IF OBJECT_ID(N'[dbo].[FK_StatusTaskStatus]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[TaskStatus] DROP CONSTRAINT [FK_StatusTaskStatus];
-GO
-IF OBJECT_ID(N'[dbo].[FK_TaskAuditTrail]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AuditTrails] DROP CONSTRAINT [FK_TaskAuditTrail];
-GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Users];
-GO
-IF OBJECT_ID(N'[dbo].[Roles]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Roles];
-GO
-IF OBJECT_ID(N'[dbo].[Countries]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Countries];
-GO
-IF OBJECT_ID(N'[dbo].[UserCountryRoles]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[UserCountryRoles];
-GO
-IF OBJECT_ID(N'[dbo].[Rules]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Rules];
-GO
-IF OBJECT_ID(N'[dbo].[TaskTypes]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[TaskTypes];
-GO
-IF OBJECT_ID(N'[dbo].[Tasks]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Tasks];
-GO
-IF OBJECT_ID(N'[dbo].[Files]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Files];
-GO
-IF OBJECT_ID(N'[dbo].[CarryForwardRules]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[CarryForwardRules];
-GO
-IF OBJECT_ID(N'[dbo].[EmailTemplates]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[EmailTemplates];
-GO
-IF OBJECT_ID(N'[dbo].[Emails]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Emails];
-GO
-IF OBJECT_ID(N'[dbo].[Status]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Status];
-GO
-IF OBJECT_ID(N'[dbo].[TaskStatus]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[TaskStatus];
-GO
-IF OBJECT_ID(N'[dbo].[AuditTrails]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[AuditTrails];
-GO
 
 -- --------------------------------------------------
 -- Creating all tables
 -- --------------------------------------------------
 
 -- Creating table 'Users'
-CREATE TABLE [dbo].[Users] (
+CREATE TABLE [TaskUtility].[Users] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Email] nvarchar(max)  NOT NULL
@@ -120,14 +36,14 @@ CREATE TABLE [dbo].[Users] (
 GO
 
 -- Creating table 'Roles'
-CREATE TABLE [dbo].[Roles] (
+CREATE TABLE [TaskUtility].[Roles] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL
 );
 GO
 
 -- Creating table 'Countries'
-CREATE TABLE [dbo].[Countries] (
+CREATE TABLE [TaskUtility].[Countries] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Q1Month] nvarchar(max)  NOT NULL
@@ -135,7 +51,7 @@ CREATE TABLE [dbo].[Countries] (
 GO
 
 -- Creating table 'UserCountryRoles'
-CREATE TABLE [dbo].[UserCountryRoles] (
+CREATE TABLE [TaskUtility].[UserCountryRoles] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
     [User_Id] bigint  NOT NULL,
     [Role_Id] int  NOT NULL,
@@ -144,7 +60,7 @@ CREATE TABLE [dbo].[UserCountryRoles] (
 GO
 
 -- Creating table 'Rules'
-CREATE TABLE [dbo].[Rules] (
+CREATE TABLE [TaskUtility].[Rules] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [BusinessDay] smallint  NOT NULL,
@@ -155,14 +71,14 @@ CREATE TABLE [dbo].[Rules] (
 GO
 
 -- Creating table 'TaskTypes'
-CREATE TABLE [dbo].[TaskTypes] (
+CREATE TABLE [TaskUtility].[TaskTypes] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL
 );
 GO
 
 -- Creating table 'Tasks'
-CREATE TABLE [dbo].[Tasks] (
+CREATE TABLE [TaskUtility].[Tasks] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Path] nvarchar(max)  NOT NULL,
@@ -172,7 +88,7 @@ CREATE TABLE [dbo].[Tasks] (
 GO
 
 -- Creating table 'Files'
-CREATE TABLE [dbo].[Files] (
+CREATE TABLE [TaskUtility].[Files] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Task_Id] int  NOT NULL
@@ -180,7 +96,7 @@ CREATE TABLE [dbo].[Files] (
 GO
 
 -- Creating table 'CarryForwardRules'
-CREATE TABLE [dbo].[CarryForwardRules] (
+CREATE TABLE [TaskUtility].[CarryForwardRules] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
     [PendingSince] datetime  NOT NULL,
     [Rule_Id] bigint  NOT NULL
@@ -188,7 +104,7 @@ CREATE TABLE [dbo].[CarryForwardRules] (
 GO
 
 -- Creating table 'EmailTemplates'
-CREATE TABLE [dbo].[EmailTemplates] (
+CREATE TABLE [TaskUtility].[EmailTemplates] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
     [From] nvarchar(max)  NOT NULL,
     [To] nvarchar(max)  NOT NULL,
@@ -200,29 +116,26 @@ CREATE TABLE [dbo].[EmailTemplates] (
 GO
 
 -- Creating table 'Emails'
-CREATE TABLE [dbo].[Emails] (
+CREATE TABLE [TaskUtility].[Emails] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
-    [From] nvarchar(max)  NOT NULL,
-    [To] nvarchar(max)  NOT NULL,
-    [CC] nvarchar(max)  NOT NULL,
     [Subject] nvarchar(max)  NOT NULL,
     [Message] nvarchar(max)  NOT NULL,
-    [UserCountryRole_Id] bigint  NOT NULL,
+    [FromUserCountryRole_Id] bigint  NOT NULL,
     [EmailTemplate_Id] bigint  NOT NULL,
-    [UserCountryRole1_Id] bigint  NOT NULL,
-    [UserCountryRole2_Id] bigint  NOT NULL
+    [ToUserCountryRole_Id] bigint  NOT NULL,
+    [CCUserCountryRole2_Id] bigint  NOT NULL
 );
 GO
 
 -- Creating table 'Status'
-CREATE TABLE [dbo].[Status] (
+CREATE TABLE [TaskUtility].[Status] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL
 );
 GO
 
 -- Creating table 'TaskStatus'
-CREATE TABLE [dbo].[TaskStatus] (
+CREATE TABLE [TaskUtility].[TaskStatus] (
     [Id] bigint IDENTITY(1,1) NOT NULL,
     [Task_Id] int  NOT NULL,
     [Status_Id] bigint  NOT NULL
@@ -230,7 +143,7 @@ CREATE TABLE [dbo].[TaskStatus] (
 GO
 
 -- Creating table 'AuditTrails'
-CREATE TABLE [dbo].[AuditTrails] (
+CREATE TABLE [TaskUtility].[AuditTrails] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Log] nvarchar(max)  NOT NULL,
     [Task_Id] int  NOT NULL
@@ -242,85 +155,85 @@ GO
 -- --------------------------------------------------
 
 -- Creating primary key on [Id] in table 'Users'
-ALTER TABLE [dbo].[Users]
+ALTER TABLE [TaskUtility].[Users]
 ADD CONSTRAINT [PK_Users]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Id] in table 'Roles'
-ALTER TABLE [dbo].[Roles]
+ALTER TABLE [TaskUtility].[Roles]
 ADD CONSTRAINT [PK_Roles]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Id] in table 'Countries'
-ALTER TABLE [dbo].[Countries]
+ALTER TABLE [TaskUtility].[Countries]
 ADD CONSTRAINT [PK_Countries]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Id] in table 'UserCountryRoles'
-ALTER TABLE [dbo].[UserCountryRoles]
+ALTER TABLE [TaskUtility].[UserCountryRoles]
 ADD CONSTRAINT [PK_UserCountryRoles]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Id] in table 'Rules'
-ALTER TABLE [dbo].[Rules]
+ALTER TABLE [TaskUtility].[Rules]
 ADD CONSTRAINT [PK_Rules]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Id] in table 'TaskTypes'
-ALTER TABLE [dbo].[TaskTypes]
+ALTER TABLE [TaskUtility].[TaskTypes]
 ADD CONSTRAINT [PK_TaskTypes]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Id] in table 'Tasks'
-ALTER TABLE [dbo].[Tasks]
+ALTER TABLE [TaskUtility].[Tasks]
 ADD CONSTRAINT [PK_Tasks]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Id] in table 'Files'
-ALTER TABLE [dbo].[Files]
+ALTER TABLE [TaskUtility].[Files]
 ADD CONSTRAINT [PK_Files]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Id] in table 'CarryForwardRules'
-ALTER TABLE [dbo].[CarryForwardRules]
+ALTER TABLE [TaskUtility].[CarryForwardRules]
 ADD CONSTRAINT [PK_CarryForwardRules]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Id] in table 'EmailTemplates'
-ALTER TABLE [dbo].[EmailTemplates]
+ALTER TABLE [TaskUtility].[EmailTemplates]
 ADD CONSTRAINT [PK_EmailTemplates]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Id] in table 'Emails'
-ALTER TABLE [dbo].[Emails]
+ALTER TABLE [TaskUtility].[Emails]
 ADD CONSTRAINT [PK_Emails]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Id] in table 'Status'
-ALTER TABLE [dbo].[Status]
+ALTER TABLE [TaskUtility].[Status]
 ADD CONSTRAINT [PK_Status]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Id] in table 'TaskStatus'
-ALTER TABLE [dbo].[TaskStatus]
+ALTER TABLE [TaskUtility].[TaskStatus]
 ADD CONSTRAINT [PK_TaskStatus]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
 -- Creating primary key on [Id] in table 'AuditTrails'
-ALTER TABLE [dbo].[AuditTrails]
+ALTER TABLE [TaskUtility].[AuditTrails]
 ADD CONSTRAINT [PK_AuditTrails]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
@@ -330,257 +243,257 @@ GO
 -- --------------------------------------------------
 
 -- Creating foreign key on [User_Id] in table 'UserCountryRoles'
-ALTER TABLE [dbo].[UserCountryRoles]
+ALTER TABLE [TaskUtility].[UserCountryRoles]
 ADD CONSTRAINT [FK_UserUserCountryRole]
     FOREIGN KEY ([User_Id])
-    REFERENCES [dbo].[Users]
+    REFERENCES [TaskUtility].[Users]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserUserCountryRole'
 CREATE INDEX [IX_FK_UserUserCountryRole]
-ON [dbo].[UserCountryRoles]
+ON [TaskUtility].[UserCountryRoles]
     ([User_Id]);
 GO
 
 -- Creating foreign key on [Role_Id] in table 'UserCountryRoles'
-ALTER TABLE [dbo].[UserCountryRoles]
+ALTER TABLE [TaskUtility].[UserCountryRoles]
 ADD CONSTRAINT [FK_RoleUserCountryRole]
     FOREIGN KEY ([Role_Id])
-    REFERENCES [dbo].[Roles]
+    REFERENCES [TaskUtility].[Roles]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_RoleUserCountryRole'
 CREATE INDEX [IX_FK_RoleUserCountryRole]
-ON [dbo].[UserCountryRoles]
+ON [TaskUtility].[UserCountryRoles]
     ([Role_Id]);
 GO
 
 -- Creating foreign key on [Country_Id] in table 'UserCountryRoles'
-ALTER TABLE [dbo].[UserCountryRoles]
+ALTER TABLE [TaskUtility].[UserCountryRoles]
 ADD CONSTRAINT [FK_CountryUserCountryRole]
     FOREIGN KEY ([Country_Id])
-    REFERENCES [dbo].[Countries]
+    REFERENCES [TaskUtility].[Countries]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_CountryUserCountryRole'
 CREATE INDEX [IX_FK_CountryUserCountryRole]
-ON [dbo].[UserCountryRoles]
+ON [TaskUtility].[UserCountryRoles]
     ([Country_Id]);
 GO
 
 -- Creating foreign key on [TaskType_Id] in table 'Tasks'
-ALTER TABLE [dbo].[Tasks]
+ALTER TABLE [TaskUtility].[Tasks]
 ADD CONSTRAINT [FK_TaskTypeTask]
     FOREIGN KEY ([TaskType_Id])
-    REFERENCES [dbo].[TaskTypes]
+    REFERENCES [TaskUtility].[TaskTypes]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_TaskTypeTask'
 CREATE INDEX [IX_FK_TaskTypeTask]
-ON [dbo].[Tasks]
+ON [TaskUtility].[Tasks]
     ([TaskType_Id]);
 GO
 
 -- Creating foreign key on [UserCountryRole_Id] in table 'Rules'
-ALTER TABLE [dbo].[Rules]
+ALTER TABLE [TaskUtility].[Rules]
 ADD CONSTRAINT [FK_UserCountryRoleRule]
     FOREIGN KEY ([UserCountryRole_Id])
-    REFERENCES [dbo].[UserCountryRoles]
+    REFERENCES [TaskUtility].[UserCountryRoles]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserCountryRoleRule'
 CREATE INDEX [IX_FK_UserCountryRoleRule]
-ON [dbo].[Rules]
+ON [TaskUtility].[Rules]
     ([UserCountryRole_Id]);
 GO
 
 -- Creating foreign key on [Task_Id] in table 'Files'
-ALTER TABLE [dbo].[Files]
+ALTER TABLE [TaskUtility].[Files]
 ADD CONSTRAINT [FK_TaskFile]
     FOREIGN KEY ([Task_Id])
-    REFERENCES [dbo].[Tasks]
+    REFERENCES [TaskUtility].[Tasks]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_TaskFile'
 CREATE INDEX [IX_FK_TaskFile]
-ON [dbo].[Files]
+ON [TaskUtility].[Files]
     ([Task_Id]);
 GO
 
 -- Creating foreign key on [Rule_Id] in table 'Tasks'
-ALTER TABLE [dbo].[Tasks]
+ALTER TABLE [TaskUtility].[Tasks]
 ADD CONSTRAINT [FK_RuleTask]
     FOREIGN KEY ([Rule_Id])
-    REFERENCES [dbo].[Rules]
+    REFERENCES [TaskUtility].[Rules]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_RuleTask'
 CREATE INDEX [IX_FK_RuleTask]
-ON [dbo].[Tasks]
+ON [TaskUtility].[Tasks]
     ([Rule_Id]);
 GO
 
 -- Creating foreign key on [Rule_Id] in table 'CarryForwardRules'
-ALTER TABLE [dbo].[CarryForwardRules]
+ALTER TABLE [TaskUtility].[CarryForwardRules]
 ADD CONSTRAINT [FK_RuleCarryForwardRules]
     FOREIGN KEY ([Rule_Id])
-    REFERENCES [dbo].[Rules]
+    REFERENCES [TaskUtility].[Rules]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_RuleCarryForwardRules'
 CREATE INDEX [IX_FK_RuleCarryForwardRules]
-ON [dbo].[CarryForwardRules]
+ON [TaskUtility].[CarryForwardRules]
     ([Rule_Id]);
 GO
 
 -- Creating foreign key on [Task_Id] in table 'EmailTemplates'
-ALTER TABLE [dbo].[EmailTemplates]
+ALTER TABLE [TaskUtility].[EmailTemplates]
 ADD CONSTRAINT [FK_TaskEmailTemplate]
     FOREIGN KEY ([Task_Id])
-    REFERENCES [dbo].[Tasks]
+    REFERENCES [TaskUtility].[Tasks]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_TaskEmailTemplate'
 CREATE INDEX [IX_FK_TaskEmailTemplate]
-ON [dbo].[EmailTemplates]
+ON [TaskUtility].[EmailTemplates]
     ([Task_Id]);
 GO
 
--- Creating foreign key on [UserCountryRole_Id] in table 'Emails'
-ALTER TABLE [dbo].[Emails]
+-- Creating foreign key on [FromUserCountryRole_Id] in table 'Emails'
+ALTER TABLE [TaskUtility].[Emails]
 ADD CONSTRAINT [FK_UserCountryRoleEmail]
-    FOREIGN KEY ([UserCountryRole_Id])
-    REFERENCES [dbo].[UserCountryRoles]
+    FOREIGN KEY ([FromUserCountryRole_Id])
+    REFERENCES [TaskUtility].[UserCountryRoles]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserCountryRoleEmail'
 CREATE INDEX [IX_FK_UserCountryRoleEmail]
-ON [dbo].[Emails]
-    ([UserCountryRole_Id]);
+ON [TaskUtility].[Emails]
+    ([FromUserCountryRole_Id]);
 GO
 
 -- Creating foreign key on [EmailTemplate_Id] in table 'Emails'
-ALTER TABLE [dbo].[Emails]
+ALTER TABLE [TaskUtility].[Emails]
 ADD CONSTRAINT [FK_EmailTemplateEmail]
     FOREIGN KEY ([EmailTemplate_Id])
-    REFERENCES [dbo].[EmailTemplates]
+    REFERENCES [TaskUtility].[EmailTemplates]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_EmailTemplateEmail'
 CREATE INDEX [IX_FK_EmailTemplateEmail]
-ON [dbo].[Emails]
+ON [TaskUtility].[Emails]
     ([EmailTemplate_Id]);
 GO
 
 -- Creating foreign key on [Task_Id] in table 'TaskStatus'
-ALTER TABLE [dbo].[TaskStatus]
+ALTER TABLE [TaskUtility].[TaskStatus]
 ADD CONSTRAINT [FK_TaskTaskStatus]
     FOREIGN KEY ([Task_Id])
-    REFERENCES [dbo].[Tasks]
+    REFERENCES [TaskUtility].[Tasks]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_TaskTaskStatus'
 CREATE INDEX [IX_FK_TaskTaskStatus]
-ON [dbo].[TaskStatus]
+ON [TaskUtility].[TaskStatus]
     ([Task_Id]);
 GO
 
 -- Creating foreign key on [Status_Id] in table 'TaskStatus'
-ALTER TABLE [dbo].[TaskStatus]
+ALTER TABLE [TaskUtility].[TaskStatus]
 ADD CONSTRAINT [FK_StatusTaskStatus]
     FOREIGN KEY ([Status_Id])
-    REFERENCES [dbo].[Status]
+    REFERENCES [TaskUtility].[Status]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_StatusTaskStatus'
 CREATE INDEX [IX_FK_StatusTaskStatus]
-ON [dbo].[TaskStatus]
+ON [TaskUtility].[TaskStatus]
     ([Status_Id]);
 GO
 
 -- Creating foreign key on [Task_Id] in table 'AuditTrails'
-ALTER TABLE [dbo].[AuditTrails]
+ALTER TABLE [TaskUtility].[AuditTrails]
 ADD CONSTRAINT [FK_TaskAuditTrail]
     FOREIGN KEY ([Task_Id])
-    REFERENCES [dbo].[Tasks]
+    REFERENCES [TaskUtility].[Tasks]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_TaskAuditTrail'
 CREATE INDEX [IX_FK_TaskAuditTrail]
-ON [dbo].[AuditTrails]
+ON [TaskUtility].[AuditTrails]
     ([Task_Id]);
 GO
 
--- Creating foreign key on [UserCountryRole1_Id] in table 'Emails'
-ALTER TABLE [dbo].[Emails]
+-- Creating foreign key on [ToUserCountryRole_Id] in table 'Emails'
+ALTER TABLE [TaskUtility].[Emails]
 ADD CONSTRAINT [FK_UserCountryRoleEmail1]
-    FOREIGN KEY ([UserCountryRole1_Id])
-    REFERENCES [dbo].[UserCountryRoles]
+    FOREIGN KEY ([ToUserCountryRole_Id])
+    REFERENCES [TaskUtility].[UserCountryRoles]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserCountryRoleEmail1'
 CREATE INDEX [IX_FK_UserCountryRoleEmail1]
-ON [dbo].[Emails]
-    ([UserCountryRole1_Id]);
+ON [TaskUtility].[Emails]
+    ([ToUserCountryRole_Id]);
 GO
 
--- Creating foreign key on [UserCountryRole2_Id] in table 'Emails'
-ALTER TABLE [dbo].[Emails]
+-- Creating foreign key on [CCUserCountryRole2_Id] in table 'Emails'
+ALTER TABLE [TaskUtility].[Emails]
 ADD CONSTRAINT [FK_UserCountryRoleEmail2]
-    FOREIGN KEY ([UserCountryRole2_Id])
-    REFERENCES [dbo].[UserCountryRoles]
+    FOREIGN KEY ([CCUserCountryRole2_Id])
+    REFERENCES [TaskUtility].[UserCountryRoles]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserCountryRoleEmail2'
 CREATE INDEX [IX_FK_UserCountryRoleEmail2]
-ON [dbo].[Emails]
-    ([UserCountryRole2_Id]);
+ON [TaskUtility].[Emails]
+    ([CCUserCountryRole2_Id]);
 GO
 
 -- Creating foreign key on [UserCountryRole1_Id] in table 'Rules'
-ALTER TABLE [dbo].[Rules]
+ALTER TABLE [TaskUtility].[Rules]
 ADD CONSTRAINT [FK_UserCountryRoleRule1]
     FOREIGN KEY ([UserCountryRole1_Id])
-    REFERENCES [dbo].[UserCountryRoles]
+    REFERENCES [TaskUtility].[UserCountryRoles]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_UserCountryRoleRule1'
 CREATE INDEX [IX_FK_UserCountryRoleRule1]
-ON [dbo].[Rules]
+ON [TaskUtility].[Rules]
     ([UserCountryRole1_Id]);
 GO
 
