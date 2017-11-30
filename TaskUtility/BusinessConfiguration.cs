@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace TaskUtility
 {
-
+    public delegate void ExecuteTask(BusinessConfiguration rule);
     public class BusinessConfiguration : IBusinessConfiguration
     {
         public BusinessConfiguration() { }
@@ -33,21 +33,23 @@ namespace TaskUtility
         {
             CountryId = countryId;
             //connect to the database and fetch the list of Business rules greater than the nth day
-            /*using (LADAutomationEntities context = new LADAutomationEntities())
+            using (LADAutomationEntities context = new LADAutomationEntities())
             {
-                bc = (from businessConfig in context.Rules
-                         join userCountryRole in context.UserCountryRoles on businessConfig.OwnerId equals userCountryRole.Id
-                         join owner in context.Users on userCountryRole.UserId equals owner.Id
-                         join recipient in context.Users on userCountryRole.UserId equals recipient.Id
-                         join country in context.Countries on userCountryRole.CountryId equals country.Id
-                         where country.Id == countryId && businessConfig.BusinessDay == dayOfTheMonth
-                         select new BusinessConfiguration() {
-                             RuleId = businessConfig.Id,
-                             Rule = businessConfig.Name,
-                             Owner = owner.Email,
-                             Recipient = recipient.Email
-                         }).FirstOrDefault();
-            }*/
+                var bc = (from businessConfig in context.Rules
+                      join userCountryRole in context.UserCountryRoles on businessConfig.UserCountryRole_Id equals userCountryRole.Id
+                      join owner in context.Users on userCountryRole.User_Id equals owner.Id
+                      join userCountryRole1 in context.UserCountryRoles on businessConfig.UserCountryRole_Id equals userCountryRole1.Id
+                      join recipient in context.Users on userCountryRole1.User_Id equals recipient.Id
+                      join country in context.Countries on userCountryRole.Country_Id equals country.Id
+                      where country.Id == countryId && businessConfig.BusinessDay == dayOfTheMonth
+                      select new BusinessConfiguration()
+                      {
+                          RuleId = businessConfig.Id,
+                          Rule = businessConfig.Name,
+                          Owner = owner.Email,
+                          Recipient = recipient.Email
+                      }).FirstOrDefault();
+            }
             return this;
         }
         public bool ExecuteBusinessRule(BusinessConfiguration businessConfiguration)

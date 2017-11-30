@@ -85,7 +85,7 @@
     <Compile Include="BusinessConfiguration.cs" />
     <Compile Include="CalendarUtility.cs" />
     <Compile Include="CarryForwardBusinessConfigurations.cs" />
-    <Compile Include="CarryForwardRules.cs">
+    <Compile Include="CarryForwardRule.cs">
       <DependentUpon>LADAutomationDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Country.cs">
@@ -101,7 +101,6 @@
     <Compile Include="File.cs">
       <DependentUpon>LADAutomationDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="FilePath.cs" />
     <Compile Include="ICarryForwardBusinessConfiguration.cs" />
     <Compile Include="IBusinessConfiguration.cs" />
     <Compile Include="Constants.cs" />
@@ -131,14 +130,13 @@
     <Compile Include="Rule.cs">
       <DependentUpon>LADAutomationDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Specification.cs" />
     <Compile Include="Status.cs">
       <DependentUpon>LADAutomationDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Task.cs">
       <DependentUpon>LADAutomationDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TaskStatus.cs">
+    <Compile Include="TaskStatu.cs">
       <DependentUpon>LADAutomationDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TaskType.cs">

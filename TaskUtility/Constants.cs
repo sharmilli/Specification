@@ -25,10 +25,12 @@
         diciembre = 12
     }
 
-    public enum Tasks
+    public enum TaskTypes
     {
         Email=1,
-        Package=2,
-        Procedure=3
+        ImportData=2,
+        ExportData=3,
+        MonitorFileshare=4,
+        ExecuteProcedures=5
     }
 }

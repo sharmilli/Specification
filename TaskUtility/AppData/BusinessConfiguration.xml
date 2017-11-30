@@ -1,36 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <BusinessSpecification>
-  <Business id="1" name="Mexico" q1Month="Nov" remainingWorkDays="4" requestorEmail="sharmilis.priyadarsini@gmail.com">
-    <Rule name="MonthlyPrebookRequestReminder" nthWorkingDay="4" isRemaing="1" freequency="Monthly" owner="Requestor">
-      <Task name="Email" type="reminder"/>
-    </Rule>
-    <Rule name="MonthlyReports" nthWorkingDay="1" isRemaing="0" freequency="Monthly" owner="ITTeam">
-      <Task name="LookUp" type="check"/>
-      <Task name="Email" type="reminder"/>
-      <Task name="Email" type="Notification"/>
-    </Rule>
-    <Rule name="PrebookingReports" nthWorkingDay="3" isRemaing="0" freequency="Monthly" owner="ITTeam">
-      <Task name="LookUp" type="check"/>
-      <Task name="Email" type="reminder"/>
-      <Task name="Email" type="Notification"/>
-    </Rule>
-    <Rule name="GPRequestReminder" nthWorkingDay="2" isRemaing="0" freequency="Monthly" owner="Requestor">
-      <Task name="Email" type="reminder"/>
-    </Rule>
-    <Rule name="AccountsTeamValidation" nthWorkingDay="2" isRemaing="0" freequency="Monthly" owner="Accounts">
-      <Task name="Email" type="Notification"/>
-    </Rule>
-    <Rule name="PortfolioExecutiveComments" nthWorkingDay="4" isRemaining="0" freequency="Monthly" owner="PortfolioExecutive">
-      <Task name="Procedure" type="create"/>
-      <Task name="Email" type="Notification"/>
-    </Rule>
-    <Rule name="PrepareMonthlyLAD" nthWorkingDay="10" isRemaining="0" freequency="Monthly" owner="Puertorico">
-      <Task name="Package" type="Import"/>
-      <Task name="Procedure" type="create"/>
-      <Task name="Export" type="Excel"/>
-      <Task name="Email" type="Notification"/>
-    </Rule>
-  </Business>
-  <Business id="2" name="Equador" q1Month="Nov" remainingWorkDays="4" requestorEmail="sharmili.priyadharshini@gmail.com"/>
-  
+  <Business id="1" name="Mexico" q1Month="Dec" remainingWorkDays="4" requestorEmail=""/>
+  <Business id="2" name="Equador" q1Month="Dec" remainingWorkDays="1" requestorEmail=""/>
+  <Business id="3" name="Brazil" q1Month="Dec" remainingWorkDays="3" requestorEmail=""/>
+  <Business id="4" name="Puerto Rico" q1Month="Dec" remainingWorkDays="3" requestorEmail=""/>
 </BusinessSpecification>

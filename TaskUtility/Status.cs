@@ -14,7 +14,16 @@ namespace TaskUtility
     
     public partial class Status
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Status()
+        {
+            this.TaskStatus = new HashSet<TaskStatu>();
+        }
+    
         public long Id { get; set; }
         public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TaskStatu> TaskStatus { get; set; }
     }
 }

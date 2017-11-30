@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TaskUtility
 {
-    public class Procedure:ITask
+    public class Procedure
     {
         
         private Procedure() { }
@@ -16,7 +16,7 @@ namespace TaskUtility
         }
         public int TaskID { get; set; }
 
-        public Tasks TaskName { get; set; }
+        public TaskType TaskName { get; set; }
 
         public string Command { get; set; }
 

@@ -4,38 +4,39 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3318c99338b5469e8b739a8b4801b7c5" Name="Diagram1" ZoomLevel="85" >
-        <EntityTypeShape EntityType="LADAutomationModel.User" Width="1.5" PointX="1.375" PointY="0.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="LADAutomationModel.Role" Width="1.5" PointX="3.625" PointY="0.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="LADAutomationModel.Country" Width="1.5" PointX="6.125" PointY="0.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="LADAutomationModel.UserCountryRole" Width="1.625" PointX="3.5" PointY="2.5" IsExpanded="false" />
-        <AssociationConnector Association="LADAutomationModel.UserUserCountryRole" />
-        <AssociationConnector Association="LADAutomationModel.RoleUserCountryRole" />
-        <AssociationConnector Association="LADAutomationModel.CountryUserCountryRole" />
-        <EntityTypeShape EntityType="LADAutomationModel.Rule" Width="1.5" PointX="10.75" PointY="3.625" IsExpanded="false" />
-        <EntityTypeShape EntityType="LADAutomationModel.TaskType" Width="1.5" PointX="8.25" PointY="0.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="LADAutomationModel.Task" Width="1.5" PointX="10.75" PointY="0.5" IsExpanded="false" />
-        <AssociationConnector Association="LADAutomationModel.TaskTypeTask" />
-        <AssociationConnector Association="LADAutomationModel.UserCountryRoleRule" />
-        <EntityTypeShape EntityType="LADAutomationModel.File" Width="1.5" PointX="12.75" PointY="0.5" IsExpanded="false" />
-        <AssociationConnector Association="LADAutomationModel.TaskFile" />
-        <AssociationConnector Association="LADAutomationModel.RuleTask" />
-        <EntityTypeShape EntityType="LADAutomationModel.CarryForwardRules" Width="1.75" PointX="12.75" PointY="3.625" IsExpanded="false" />
-        <AssociationConnector Association="LADAutomationModel.RuleCarryForwardRules" />
-        <EntityTypeShape EntityType="LADAutomationModel.EmailTemplate" Width="1.5" PointX="8.25" PointY="2.75" IsExpanded="false" />
-        <AssociationConnector Association="LADAutomationModel.TaskEmailTemplate" />
-        <EntityTypeShape EntityType="LADAutomationModel.Email" Width="1.5" PointX="5.875" PointY="2.75" IsExpanded="false" />
-        <AssociationConnector Association="LADAutomationModel.UserCountryRoleEmail" />
-        <AssociationConnector Association="LADAutomationModel.EmailTemplateEmail" />
-        <EntityTypeShape EntityType="LADAutomationModel.Status" Width="1.5" PointX="14.875" PointY="2.5" IsExpanded="false" />
-        <EntityTypeShape EntityType="LADAutomationModel.TaskStatus" Width="1.5" PointX="12.75" PointY="2.5" IsExpanded="false" />
-        <AssociationConnector Association="LADAutomationModel.TaskTaskStatus" />
-        <AssociationConnector Association="LADAutomationModel.StatusTaskStatus" />
-        <EntityTypeShape EntityType="LADAutomationModel.AuditTrail" Width="1.5" PointX="14.875" PointY="0.5" IsExpanded="false" />
-        <AssociationConnector Association="LADAutomationModel.TaskAuditTrail" />
-        <AssociationConnector Association="LADAutomationModel.UserCountryRoleEmail1" />
-        <AssociationConnector Association="LADAutomationModel.UserCountryRoleEmail2" />
-        <AssociationConnector Association="LADAutomationModel.UserCountryRoleRule1" />
+      <Diagram DiagramId="3318c99338b5469e8b739a8b4801b7c5" Name="Diagram1" ZoomLevel="63" >
+        <EntityTypeShape EntityType="LADAutomationModel.AuditTrail" Width="1.5" PointX="9.75" PointY="16.375" />
+        <EntityTypeShape EntityType="LADAutomationModel.CarryForwardRule" Width="1.5" PointX="7.5" PointY="21.75" />
+        <EntityTypeShape EntityType="LADAutomationModel.Country" Width="1.5" PointX="0.75" PointY="12.5" />
+        <EntityTypeShape EntityType="LADAutomationModel.Email" Width="1.5" PointX="5.25" PointY="8.625" />
+        <EntityTypeShape EntityType="LADAutomationModel.EmailTemplate" Width="1.5" PointX="9.75" PointY="10.125" />
+        <EntityTypeShape EntityType="LADAutomationModel.File" Width="1.5" PointX="9.75" PointY="18.875" />
+        <EntityTypeShape EntityType="LADAutomationModel.Role" Width="1.5" PointX="0.75" PointY="6.125" />
+        <EntityTypeShape EntityType="LADAutomationModel.Rule" Width="1.5" PointX="5.25" PointY="12.625" />
+        <EntityTypeShape EntityType="LADAutomationModel.Status" Width="1.5" PointX="10.5" PointY="7.25" />
+        <EntityTypeShape EntityType="LADAutomationModel.Task" Width="1.5" PointX="7.5" PointY="12.25" />
+        <EntityTypeShape EntityType="LADAutomationModel.TaskStatu" Width="1.5" PointX="12.75" PointY="13" />
+        <EntityTypeShape EntityType="LADAutomationModel.TaskType" Width="1.5" PointX="5.25" PointY="17.25" />
+        <EntityTypeShape EntityType="LADAutomationModel.UserCountryRole" Width="1.5" PointX="3" PointY="8.5" />
+        <EntityTypeShape EntityType="LADAutomationModel.User" Width="1.5" PointX="0.75" PointY="9.25" />
+        <AssociationConnector Association="LADAutomationModel.FK_TaskAuditTrail" />
+        <AssociationConnector Association="LADAutomationModel.FK_RuleCarryForwardRules" />
+        <AssociationConnector Association="LADAutomationModel.FK_CountryUserCountryRole" />
+        <AssociationConnector Association="LADAutomationModel.FK_EmailTemplateEmail" />
+        <AssociationConnector Association="LADAutomationModel.FK_UserCountryRoleEmail" />
+        <AssociationConnector Association="LADAutomationModel.FK_UserCountryRoleEmail1" />
+        <AssociationConnector Association="LADAutomationModel.FK_UserCountryRoleEmail2" />
+        <AssociationConnector Association="LADAutomationModel.FK_TaskEmailTemplate" />
+        <AssociationConnector Association="LADAutomationModel.FK_TaskFile" />
+        <AssociationConnector Association="LADAutomationModel.FK_RoleUserCountryRole" />
+        <AssociationConnector Association="LADAutomationModel.FK_RuleTask" />
+        <AssociationConnector Association="LADAutomationModel.FK_UserCountryRoleRule" />
+        <AssociationConnector Association="LADAutomationModel.FK_UserCountryRoleRule1" />
+        <AssociationConnector Association="LADAutomationModel.FK_StatusTaskStatus" />
+        <AssociationConnector Association="LADAutomationModel.FK_Tasks_Tasks" />
+        <AssociationConnector Association="LADAutomationModel.FK_TaskTaskStatus" />
+        <AssociationConnector Association="LADAutomationModel.FK_TaskTypeTask" />
+        <AssociationConnector Association="LADAutomationModel.FK_UserUserCountryRole" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

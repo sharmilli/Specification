@@ -17,10 +17,14 @@ namespace TaskUtility
         public long Id { get; set; }
         public string Subject { get; set; }
         public string Message { get; set; }
+        public long FromUserCountryRole_Id { get; set; }
+        public long EmailTemplate_Id { get; set; }
+        public long ToUserCountryRole_Id { get; set; }
+        public long CCUserCountryRole2_Id { get; set; }
     
-        public virtual UserCountryRole FromUserCountryRole { get; set; }
         public virtual EmailTemplate EmailTemplate { get; set; }
-        public virtual UserCountryRole ToUserCountryRole { get; set; }
-        public virtual UserCountryRole CCUserCountryRole2 { get; set; }
+        public virtual UserCountryRole UserCountryRole { get; set; }
+        public virtual UserCountryRole UserCountryRole1 { get; set; }
+        public virtual UserCountryRole UserCountryRole2 { get; set; }
     }
 }

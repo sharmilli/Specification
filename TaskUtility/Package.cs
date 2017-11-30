@@ -1,7 +1,7 @@
 ﻿
 namespace TaskUtility
 {
-    public class Package:ITask
+    public class Package
     {
         private Package() { }
 
@@ -12,7 +12,7 @@ namespace TaskUtility
         }
         public int TaskID { get; set; }
 
-        public Tasks TaskName { get; set; }
+        public TaskType TaskName { get; set; }
 
         public string Name { get; set; }
 

@@ -17,20 +17,22 @@ namespace TaskUtility
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Rule()
         {
+            this.CarryForwardRules = new HashSet<CarryForwardRule>();
             this.Tasks = new HashSet<Task>();
-            this.CarryForwardRules = new HashSet<CarryForwardRules>();
         }
     
         public long Id { get; set; }
         public string Name { get; set; }
         public short BusinessDay { get; set; }
         public bool isRemaining { get; set; }
+        public long UserCountryRole_Id { get; set; }
+        public long UserCountryRole1_Id { get; set; }
     
-        public virtual UserCountryRole UserCountryRole { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CarryForwardRule> CarryForwardRules { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Task> Tasks { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CarryForwardRules> CarryForwardRules { get; set; }
+        public virtual UserCountryRole UserCountryRole { get; set; }
         public virtual UserCountryRole UserCountryRole1 { get; set; }
     }
 }

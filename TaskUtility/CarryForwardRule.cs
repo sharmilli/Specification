@@ -12,10 +12,11 @@ namespace TaskUtility
     using System;
     using System.Collections.Generic;
     
-    public partial class CarryForwardRules
+    public partial class CarryForwardRule
     {
         public long Id { get; set; }
         public System.DateTime PendingSince { get; set; }
+        public long Rule_Id { get; set; }
     
         public virtual Rule Rule { get; set; }
     }

@@ -16,6 +16,7 @@ namespace TaskUtility
     {
         public int Id { get; set; }
         public string Log { get; set; }
+        public int Task_Id { get; set; }
     
         public virtual Task Task { get; set; }
     }

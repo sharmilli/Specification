@@ -25,19 +25,19 @@ namespace TaskUtility
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<Country> Countries { get; set; }
-        public virtual DbSet<UserCountryRole> UserCountryRoles { get; set; }
-        public virtual DbSet<Rule> Rules { get; set; }
-        public virtual DbSet<TaskType> TaskTypes { get; set; }
-        public virtual DbSet<Task> Tasks { get; set; }
-        public virtual DbSet<File> Files { get; set; }
-        public virtual DbSet<CarryForwardRules> CarryForwardRules { get; set; }
-        public virtual DbSet<EmailTemplate> EmailTemplates { get; set; }
-        public virtual DbSet<Email> Emails { get; set; }
-        public virtual DbSet<Status> Status { get; set; }
-        public virtual DbSet<TaskStatus> TaskStatus { get; set; }
         public virtual DbSet<AuditTrail> AuditTrails { get; set; }
+        public virtual DbSet<CarryForwardRule> CarryForwardRules { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Email> Emails { get; set; }
+        public virtual DbSet<EmailTemplate> EmailTemplates { get; set; }
+        public virtual DbSet<File> Files { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Rule> Rules { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<Task> Tasks { get; set; }
+        public virtual DbSet<TaskStatu> TaskStatus { get; set; }
+        public virtual DbSet<TaskType> TaskTypes { get; set; }
+        public virtual DbSet<UserCountryRole> UserCountryRoles { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }
