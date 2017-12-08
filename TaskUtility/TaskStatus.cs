@@ -12,7 +12,7 @@ namespace TaskUtility
     using System;
     using System.Collections.Generic;
     
-    public partial class TaskStatu
+    public partial class TaskStatus
     {
         public long Id { get; set; }
         public int Task_Id { get; set; }

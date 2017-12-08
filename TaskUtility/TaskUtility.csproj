@@ -83,7 +83,7 @@
       <DependentUpon>LADAutomationDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="BusinessConfiguration.cs" />
-    <Compile Include="CalendarUtility.cs" />
+    <Compile Include="Utilities\CalendarUtility.cs" />
     <Compile Include="CarryForwardBusinessConfigurations.cs" />
     <Compile Include="CarryForwardRule.cs">
       <DependentUpon>LADAutomationDataModel.tt</DependentUpon>
@@ -97,7 +97,7 @@
     <Compile Include="EmailTemplate.cs">
       <DependentUpon>LADAutomationDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ExportToExcel.cs" />
+    <Compile Include="Utilities\ExportToExcel.cs" />
     <Compile Include="File.cs">
       <DependentUpon>LADAutomationDataModel.tt</DependentUpon>
     </Compile>
